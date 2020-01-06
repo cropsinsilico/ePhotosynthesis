@@ -1,0 +1,18 @@
+connections:
+  - input: ./EnvInput.txt
+    output: C3Leaf:Env
+    filetype: map
+    outside_loop: true
+  - input: ./MeM_input5_0.txt
+    output: C3Leaf:Einput
+    filetype: pandas
+    outside_loop: false  # Is this true?
+  - input: ./Einput7.txt
+    output: C3Leaf:Eio
+    filetype: pandas
+    outside_loop: true
+    no_header: true
+  - input: C3Leaf:LeafAssim
+    output: ./LeafmetaOut.txt
+    filetype: table
+    field_names: A

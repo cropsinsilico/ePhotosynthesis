@@ -1,0 +1,11 @@
+model:
+  name: C3Leaf
+  language: matlab
+  args: ./LeafWrap.m
+  function: LeafWrap
+  inputs:
+    - Env
+    - Einput
+    - Eio
+  outputs:
+    - LeafAssim

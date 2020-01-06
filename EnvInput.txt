@@ -1,0 +1,12 @@
+WeatherRH		0.6
+WeatherTemperature	25.0
+Air_CO2			400.0
+WeatherWind		5.0
+Radiation_PAR		339.575
+Radiation_NIR		0.0
+Radiation_LW		0.0
+PhotosynthesisType	1.1
+Vcmax25			100.0
+Jmax25			200.0
+GRNC			1.0
+ProteinTotalRatio	0.973

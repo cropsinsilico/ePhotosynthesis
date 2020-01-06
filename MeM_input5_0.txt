@@ -1,5 +1,3 @@
- 
- 
 Glyma_ID_1	ProteinRatioEleByAmb	   
 Glyma.19G046800_Exp	0.943996	   
 Glyma.08G165400	1.042085	   

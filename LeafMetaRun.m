@@ -13,7 +13,6 @@ DataGeneID=InputF.textdata(:,1);
 GeneNo=size(inE.textdata,1)-1;
 ExpValue=ones(GeneNo,1);
 for i=1:GeneNo
-    inE.textdata(i+1,1)
     if find(ismember(DataGeneID,string(inE.textdata(i+1,1))))
     idRow=find(ismember(DataGeneID,string(inE.textdata(i+1,1))));
     ExpValue(i,1)=InputF.data(idRow-1,idx-2);

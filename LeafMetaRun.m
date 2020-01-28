@@ -4,7 +4,23 @@ global pcfactor;
 ProteinTotalRatio=0.973;
 pcfactor=1/ProteinTotalRatio;
 inE=importdata('MeM_input5_0.txt');
-Einput=inE.data;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Input conversion
+InputF=importdata('GrCM_output.txt');
+DataCol=InputF.textdata(1,:);
+idx = find(ismember(DataCol, 'Ele:Amb' ));
+DataGeneID=InputF.textdata(:,1);
+GeneNo=size(inE.textdata,1)-1;
+ExpValue=ones(GeneNo,1);
+for i=1:GeneNo
+    if find(ismember(DataGeneID,string(inE.textdata(i+1,1))))
+    idRow=find(ismember(DataGeneID,string(inE.textdata(i+1,1))));
+    ExpValue(i,1)=InputF.data(idRow-1,idx-2);
+    end
+end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Einput=inE.data;
+Einput=ExpValue;
 Edata=importdata('Einput7.txt');
 Eio=Edata.data(:,1);
 MetaOnly=0;% if MetaOnly=1 run Metabolic model

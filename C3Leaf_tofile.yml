@@ -1,8 +1,9 @@
 connections:
   - input: ./EnvInput.txt
-    output: C3Leaf:Env
+    output:
+      name: C3Leaf:Env
+      outside_loop: true
     filetype: map
-    outside_loop: true
   # - input: ./MeM_input5_0.txt
   #   output: C3Leaf:Einput
   #   filetype: pandas
@@ -12,13 +13,15 @@ connections:
       transform:
         transformtype: select_fields
         selected: Glyma_ID,Ele:Amb
-    output: C3Leaf:Einput
-    filetype: pandas
-    outside_loop: false  # Is this true?
+      filetype: pandas
+    output:
+      name: C3Leaf:Einput
+      outside_loop: false  # Is this true?
   - input: ./Einput7.txt
-    output: C3Leaf:Eio
+    output:
+      name: C3Leaf:Eio
+      outside_loop: true
     filetype: pandas
-    outside_loop: true
     no_header: true
   - input: C3Leaf:LeafAssim
     output: ./LeafmetaOut.txt

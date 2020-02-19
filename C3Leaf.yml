@@ -4,8 +4,28 @@ model:
   args: ./LeafWrap.m
   function: LeafWrap
   inputs:
-    - Env
-    - Einput
-    - Eio
+    - name: Env
+      outside_loop: true
+      default_file:
+        name: ./EnvInput.txt
+        filetype: map
+    - name: Einput
+      outside_loop: false  # Is this true?
+      default_file:
+        name: ./GrCM_output.txt
+        transform:
+          transformtype: select_fields
+          selected: Glyma_ID,Ele:Amb
+        filetype: pandas
+    - name: Eio
+      outside_loop: true
+      default_file:
+        name: ./Einput7.txt
+        filetype: pandas
+        no_header: true
   outputs:
-    - LeafAssim
+    - name: LeafAssim
+      default_file:
+        name: ./LeafmetaOut.txt
+        filetype: table
+        field_names: A

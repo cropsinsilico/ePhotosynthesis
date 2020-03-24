@@ -1,0 +1,4 @@
+models:
+  - name: Ephotosynthesismodel
+    language: matlab  # Runs the script using a Matlab engine
+    args: Sim_Ephotosynthesis.m

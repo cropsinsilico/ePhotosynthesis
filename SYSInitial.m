@@ -36,7 +36,7 @@ tglobal = 5000;
 
  
 global options1
-options1 = odeset('RelTol',1e-4);
+options1 = odeset('RelTol',1e-2,'AbsTol',1e-4);
 
 global PS12ratio;        
 global input_PSIIcore;

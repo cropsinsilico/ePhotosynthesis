@@ -63,7 +63,8 @@ end
 global EPS_ATP_Rate;   % The EPS_ATP_Rate is used in the overall model for the calculation of the mass balance equation of ATP.
 global PS2EPS_V16;     
 global PRGlu;
-EPS_DYDT(61) = CM_DYDT(9) - PS2EPS_V16 + EPS_ATP_Rate-PRGlu; %WY 201804
+%EPS_DYDT(61) = CM_DYDT(9) - PS2EPS_V16 + EPS_ATP_Rate-PRGlu; %WY 201804%%ATP cost of PRGlu
+EPS_DYDT(61) = CM_DYDT(9) - PS2EPS_V16 + EPS_ATP_Rate; %WY 202006 ignore the energy cost of reactions that occurs outside chloroplast 
 EPS_DYDT(17) = EPS_DYDT(61);
 
 global PS2EPS_v3;

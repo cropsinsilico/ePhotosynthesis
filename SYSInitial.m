@@ -32,11 +32,11 @@ global tglobal;
 global Primer; 
 Primer = 300; 
 
-tglobal = 5000; 
+tglobal = 10000; 
 
  
 global options1
-options1 = odeset('RelTol',1e-2,'AbsTol',1e-4);
+options1 = odeset('RelTol',1e-2,'AbsTol',1e-4,'MaxStep',300);
 
 global PS12ratio;        
 global input_PSIIcore;

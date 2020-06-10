@@ -20,7 +20,7 @@
 %    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function Resulta=trDynaPS_Drive(Cai,Lii,ATPCost,SucPath,ParaNum, Ratio)
+function Resulta=trDynaPS_Drive(Cai,Lii,ATPCost,SucPath,ParaNum, Ratio,time)
 global TestCa;
 global TestLi;
 global TestSucPath;
@@ -81,8 +81,8 @@ suc = PreProcess;
 Begin = 1;
 fin = SYSInitial(Begin);
 global options1;
-global tglobal;
-time = tglobal;
+% global tglobal;
+% time = tglobal;
 
 
 global ATPActive;
@@ -148,6 +148,10 @@ global RedoxReg_VEL;
 global RROEA_VEL;
 global AVR; 
 [row,col]=size(RuACT_VEL);
+Resulta=zeros(9,1);
+[MetaRow MetaCol]=size(d);
+Meta_slope=zeros(MetaCol,1);
+if RuACT_VEL(row,1)==time
     PSIIabs=FI_VEL( :,  57 ) ;
     PSIabs=BF_VEL(:, 11	);
     %PSIabs2=BF_VEL(:, 14)+BF_VEL(:, 16);
@@ -173,6 +177,39 @@ global AVR;
     Resulta(5)=VStarch(row);%Vstarch
     Resulta(6)=PR_VEL(row,10)*AVR;%Vt_glycerate
     Resulta(7)=PR_VEL(row,11)*AVR;%Vt_glycolate
+    
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %Steady State check A
+    LastM=find(RuACT_VEL(:,1)>=time-1000);
+    [LastR lastC]=size(LastM);
+    CheckT=RuACT_VEL(row-LastR+1:row,1);
+    CheckA=CarbonRate(row-LastR+1:row)-0.5*VPR(row-LastR+1:row);
+    FinalA=CarbonRate(row)-0.5*VPR(row);% linear regression
+    p = polyfit(CheckT,CheckA/FinalA,1);
+    A_slpoe=p(1);%slope
+    Resulta(8)=abs(A_slpoe);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    %Steady State check metabolite concentration
+    LastMeta=find(Tt(:,1)>=time-1000);
+    [LastR2 lastC2]=size(LastMeta);
+    CheckT2=Tt(MetaRow-LastR2+1:MetaRow,1);
+    for metaNo=1:MetaCol
+    CheckMeta=d(MetaRow-LastR2+1:MetaRow,metaNo);
+    FinalMeta=d(MetaRow,metaNo);
+    p = polyfit(CheckT2,CheckMeta/FinalMeta,1);% linear regression 
+    Meta_slope(metaNo,1)=p(1);%slope
+    %NAN->0
+    Meta_slope(isnan(Meta_slope)) = 0;
+    end
+    Meta_slope(15,1)=0;%[ADP]in electron transpot calculation part; This calculated metabolite concentration is not actually used in the simulation
+    Meta_slope(94,1)=0;%Xancycle A
+    Meta_slope(95,1)=0;%[ADP]%Xancycle Z
+    Resulta(9)=max(abs(Meta_slope));
+
+     
+end   
+    
     global FluxTR;
     FluxTR=zeros(81,1);
     FluxTR(1)=RuACT_VEL(row,6);%PS

@@ -1,2 +1,2 @@
-Light intensity,Vc,Vo,VPGA,VT3P,Vstarch,Vt_glycerate,Vt_glycolate
-800,24.1202,8.1406,0.0040041,1.5878,2.5457,4.0703,8.1406
+Light intensity,Vc,Vo,VPGA,VT3P,Vstarch,Vt_glycerate,Vt_glycolate,A_slope,Max_Meta_slope
+800,24.1436,8.1485,0.0037904,1.5435,2.5712,4.0742,8.1485,7.2633e-10,1.3804e-05

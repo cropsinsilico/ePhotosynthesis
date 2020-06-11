@@ -25,6 +25,7 @@
 
 
 function PSs = PSInitial(Begin)
+global VmaxAdj;
 global PSRatio;
 global PS_C_CA;             %   Global constant for the total adenylates
 global PS_C_CP;             %   Global constant for the total phosphate
@@ -322,26 +323,26 @@ if GP ==0
     SC222 = 2; 
 	STOM1  = 1; 
 	STOM2 = 1;
-	
+
 	V1		=	 2.93 * SC1 /STOM1*PSRatio(5) ;	%	(Harris & Koniger, 1997)	
-	V2		=	 30.15 * SC	* STOM2 *PSRatio(6);	%	(Harris & Koniger, 1997)	
-	V3		=	 4.04 * SC * STOM2*PSRatio(7);% 1.57*SC	    ;	%	(Harris & Koniger, 1997)
-	V5		=	1.22*SC*PSRatio(8)	    ;	%	(Harris & Koniger, 1997)	
-	V6		=	0.734*SC/STOM1*PSRatio(9)	;	%	(Harris & Koniger, 1997)	
-	V7		=	3.12*SC * 4*PSRatio(10);	%	(Harris & Koniger, 1997)	
-	V8		=	1.22*SC	*PSRatio(11)   ;	%	(Harris & Koniger, 1997)	
-    V9		=	0.32 *3 *PSRatio(12) ;       % 0.17*SC *FC	;	%	(Harris & Koniger, 1997) *3. 
+	V2		=	 30.15 * SC	* STOM2 *PSRatio(6)*VmaxAdj;	%	(Harris & Koniger, 1997)	
+	V3		=	 4.04 * SC * STOM2*PSRatio(7)*VmaxAdj;% 1.57*SC	    ;	%	(Harris & Koniger, 1997)
+	V5		=	1.22*SC*PSRatio(8)	*VmaxAdj    ;	%	(Harris & Koniger, 1997)	
+	V6		=	0.734*SC/STOM1*PSRatio(9)*VmaxAdj	;	%	(Harris & Koniger, 1997)	
+	V7		=	3.12*SC * 4*PSRatio(10)*VmaxAdj;	%	(Harris & Koniger, 1997)	
+	V8		=	1.22*SC	*PSRatio(11) *VmaxAdj  ;	%	(Harris & Koniger, 1997)	
+    V9		=	0.32 *3 *PSRatio(12)*VmaxAdj ;       % 0.17*SC *FC	;	%	(Harris & Koniger, 1997) *3. 
 	V10		=	V7;	%	(Harris & Koniger, 1997)	
-    V13		=	10.81*SC1*PSRatio(13)	;	%	(Harris & Koniger, 1997)
-	V16		=	5.47*PSRatio(14);       % (Aflalo & Shavit, 1983, Davenport & McLeod, 1986)	
-	V23		=	2 *PSRatio(15) ;
+    V13		=	10.81*SC1*PSRatio(13)*VmaxAdj	;	%	(Harris & Koniger, 1997)
+	V16		=	5.47*PSRatio(14)*VmaxAdj;       % (Aflalo & Shavit, 1983, Davenport & McLeod, 1986)	
+	V23		=	2 *PSRatio(15)*VmaxAdj ;
 
 
 end
-    V24     =   2*PSRatio(16);           
-	V31		=	1.0*PSRatio(17)*20  ;      
-	V32		=	1.0*PSRatio(18);       
-	V33		=	1.0*PSRatio(19)*20;        %WY 2018103
+    V24     =   2*PSRatio(16)*VmaxAdj;           
+	V31		=	1.0*PSRatio(17)*20 *VmaxAdj ;      
+	V32		=	1.0*PSRatio(18)*VmaxAdj;       
+	V33		=	1.0*PSRatio(19)*20*VmaxAdj;        %WY 2018103
 
     
 global Cond_V16;        % This parameter is used to modifying the V16 if needed. 

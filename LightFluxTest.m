@@ -1,8 +1,7 @@
-function ResultRate=Sim_Ephotosynthesis
+
 InputTable=importdata('InputEvn.txt');
 EvnInput=InputTable.data;
 Cai=EvnInput(1);
-Lii=EvnInput(2);
 SucPath=EvnInput(3);%if SucPath=1 with sucrose synthesis(original)///if SucPath=0 No Sucrose synthesis,only T3P output
 ATPCostTable=importdata('InputATPCost.txt');
 ATPCost=ATPCostTable.data;
@@ -13,25 +12,20 @@ time=tglobal;%simulation time
 global VmaxAdj;
 VmaxAdj=1.36;%adjust enzyme activity
 
+for i=1:30
+i
+Lii=50*i;
 
 ResultRate=trDynaPS_Drive(Cai,Lii,ATPCost,SucPath,1, 1,time);
-ResultRate(9)
+
 if ResultRate(9)>5e-05
      warning('ODE model does not reach a steady state: The 1st time ');
      ResultRate=trDynaPS_Drive(Cai,Lii,ATPCost,SucPath,1, 1,time*10);% if the ODE model can't reach steady state, increase the simulation time.
      if ResultRate(9)>5e-05
          warning('ODE model does not reach a steady state: The 2nd time (the last time) ');
-         ResultRate(:,1)=0;
+         ResultRate=0;
      end
 
 end
-
-Output(1)="Light intensity,Vc,Vo,VPGA,VT3P,Vstarch,Vt_glycerate,Vt_glycolate,A_slope,Max_Meta_slope";
-Output(2)=Lii+","+ResultRate(1)+","+ResultRate(2)+","+ResultRate(3)+","+ResultRate(4)+","+ResultRate(5)+","+ResultRate(6)+","+ResultRate(7)+","+ResultRate(8)+","+ResultRate(9);
-outfile = fopen("OutputRate.txt","w");
-fprintf(outfile,Output(1));
-fprintf(outfile,"\n");
-fprintf(outfile,Output(2));
-fclose(outfile);
+ResultRatei(:,i)=ResultRate;
 end
-

@@ -36,8 +36,7 @@ km1	=	20 * 10 ^ ( -6)	*RacRatio(3);
 Ke2	=	0.1	*RacRatio(4);	    	
 Ke3	=	1.600*RacRatio(5)	;	 	
 
-k6	=	2.5  *RacRatio(6)*4/3;	 		%WY201803 %Rubisco activity initial=80; max=120
-%k6	=	15.5/4  *RacRatio(6);	 		%WY201806
+k6	=	2.5  *RacRatio(6)*4/3;	 		%WY202006 Adjust Rubisco activity for soybean
 
 kc	=	0.016*RacRatio(7)	;	%	Michaelis menton constant for CO2, 0.016 mM				
 ko	=	0.448*RacRatio(8)	;	%	Michaelis menton constant for O2, .448 mM				

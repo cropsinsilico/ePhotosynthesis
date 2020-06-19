@@ -1,4 +1,4 @@
-CO2	400
-PAR	800
-SucPath	0
-daylength 14
+CO2 400
+PPFD 1500
+SucPath 0
+daylength 15

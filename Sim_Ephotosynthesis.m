@@ -33,5 +33,13 @@ fprintf(outfile,Output(1));
 fprintf(outfile,"\n");
 fprintf(outfile,Output(2));
 fclose(outfile);
+%%%output flux file
+global FluxTR;
+FluxName=importdata('FluxName.txt');
+vect_out(2,:) = num2cell(FluxTR);
+vect_out(1,:) = FluxName;
+fid = fopen('OutputFluxT.txt','wt');
+fprintf(fid,'%-14s  %d\n',vect_out{:});
+fclose(fid);
 end
 

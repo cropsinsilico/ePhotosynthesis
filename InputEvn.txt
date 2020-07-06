@@ -1,4 +1,4 @@
 CO2 400
 PPFD 1500
-SucPath 0
+SucPath 1
 daylength 15

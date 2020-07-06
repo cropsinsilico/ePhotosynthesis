@@ -20,15 +20,17 @@
 %    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function Resulta=trDynaPS_Drive(Cai,Lii,ATPCost,SucPath,ParaNum, Ratio,time)
+function Resulta=trDynaPS_Drive(Cai,Lii,ATPCost,NADPHCost,SucPath,ParaNum, Ratio,time)
 global TestCa;
 global TestLi;
 global TestSucPath;
 global TestATPCost;
+global TestNADPHCost;
 TestCa=Cai;
 TestLi=Lii;
 TestSucPath=SucPath;
 TestATPCost=ATPCost;
+TestNADPHCost=NADPHCost;
 % trDynaPS_Drive.m
 % This part include the function to begin the simulation.
 

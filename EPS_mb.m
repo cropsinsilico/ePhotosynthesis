@@ -27,7 +27,9 @@
 % EPS_mb.m  This model includes the mass balance equations for the full model of the light reactions.
 
 function EPS_DYDT = EPS_mb(t, EPS_Con, BF_Param, FI_Param, PS_PR_Param, Sucs_Param)
-
+global TestNADPHCost;
+global AVR;
+vNADPHcost=TestNADPHCost/AVR;
 % Try out one new way of calculating the mass balance equation.
 % In this new way, all the previous calcuations of mass balance equation is preserved and only the necessary changes are made.
 
@@ -76,5 +78,6 @@ Vmax11 = BF_RC	(	11	)			;	%	The maximum rate of ATP synthesis	Unit: mmol l-1 s-1
 
 %EPS_DYDT(62) = BF2EPS_vbfn2 - PS2EPS_v3 - 1 * PS2EPS_NADPH/(PS2EPS_NADPH + 0.5) ;
 %EPS_DYDT(62) = BF2EPS_vbfn2/2 - PS2EPS_v3;%- 1 * PS2EPS_NADPH/(PS2EPS_NADPH + 0.5) ;  %QF changed /2 and ;% - 1 * PS2EPS_NADPH/(PS2EPS_NADPH + 0.5)
-EPS_DYDT(62) = BF2EPS_vbfn2/2 - PS2EPS_v3-2*PRGlu;%WY 201804
+%EPS_DYDT(62) = BF2EPS_vbfn2/2 - PS2EPS_v3-2*PRGlu;%WY 201804
+EPS_DYDT(62) = BF2EPS_vbfn2/2 - PS2EPS_v3 - vNADPHcost;%202007
 EPS_DYDT(29) = EPS_DYDT(62);           

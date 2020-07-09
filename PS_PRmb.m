@@ -158,7 +158,7 @@ tmp(7) = v9-v10;
 
 tmp(8) = v8 - v9;
 
-tmp(9) = v16 - v2 - v23 - v13- v113 - v25 - v131-vATPcost;    %WY202003 extra ATP cost
+tmp(9) = v16 - v2 - v23 - v13- v113 -vATPcost;    %WY202007 extra ATP cost delete extra ATPcost of photorespiration and v25
 %tmp(9) = v16 - v2 - v23 - v13- v113 - v25 - v124;    %AWY201804  
 
 

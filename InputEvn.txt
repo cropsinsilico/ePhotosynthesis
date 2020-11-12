@@ -1,4 +1,0 @@
-CO2	400
-PAR	800
-SucPath	0
-daylength 14

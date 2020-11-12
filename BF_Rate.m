@@ -278,6 +278,7 @@ KE11	=	exp(-DeltaG11/(RT));      %	The equilibrium constant of ATP synthesis
 global DPH;
 
 DPH = DiffPH - MPotential/0.059;
+
 Temp	=	Vmax11 * (ADP *Pi - ATP/KE11)/((KmADP * KmPi)*(1 + ADP/KmADP + Pi/KmPi +ADP*Pi/(KmADP * KmPi)))	;	%	Unit: mmol l- s-1; The stroma volume is used as a basis for the volume
 Vbf11 = Temp; 
 

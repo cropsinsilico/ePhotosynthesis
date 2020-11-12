@@ -23,6 +23,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+% PSTitle
+% This routine defines the titles of the output for the photosynthesis routie.
 function suc = PSTitle(m,p,n)
     if n==1
             if m ==1
@@ -34,7 +36,7 @@ function suc = PSTitle(m,p,n)
             elseif m==4
                 title('T3P')
             elseif m==5
-                title('ADPG')
+                title('NONE')
             elseif m==6
                 title('FBP');
             elseif m==7
@@ -87,15 +89,13 @@ function suc = PSTitle(m,p,n)
             elseif m==12
                 title('ATP synthase');
             elseif m==13
-                title('ADPG Pyrophosphatase');
+                title('Starch Synthase');
             elseif m==14
                 title('DHAP export');
             elseif m==15
                 title('PGA export');
-            elseif m==16
-                title('GAP export');
             else
-                title('Starch synthase')
+                title('GAP export');
             end
                 suc = 1;
                 xlabel('time(s)');

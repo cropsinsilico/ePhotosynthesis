@@ -32,7 +32,7 @@ global tglobal;
 global Primer; 
 Primer = 300; 
 
-tglobal = 5000; 
+tglobal = 1000; 
 
  
 global options1

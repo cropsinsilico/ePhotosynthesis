@@ -118,7 +118,7 @@ for m = 1:52
     EPS_Con(m) = FIBF_Con(m);
 end
 
-for m = 1:36
+for m = 1:35
     EPS_Con(m+52) = CMs(m);
 end
 

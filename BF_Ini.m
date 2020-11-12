@@ -23,40 +23,46 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function BF_con = BF_Ini(begin)
-global BFRatio;
-K1	=	10^6*BFRatio(1)	    ;	%	The rate constant for formation of ISP.QH2 complex; Vmax is used here. 			
-K2	=	500*BFRatio(2)	;	        %	The rate constant for ISP.QH2-->QH(semi) + ISPH(red)	
-K3	=	5 * 10^7*BFRatio(3)	;	%	The rate constant for QH. + cytbL --> Q + cytbL- + H+;
-K4	=	5 * 10^7*BFRatio(4)	;	%	The rate constant for cytbL- + cytbH --> cytbL + cytbH-			
-K5	=	5 * 10^7*BFRatio(5)	;	%	The rate constant for CytbH- + Q --> cytbH + Q-			
+global BFVmax;
+global cATPsyn;
+global CPSi;
+global cNADPHsyn;
+% cATPsyn=1.0447;%1.01866 WY201803
+% CPSi=1.0131;% 1.0237 WY201803
+% cNADPHsyn=1.094468408;%1.0388 WY201803
+K1	=	10^6	    ;	%	The rate constant for formation of ISP.QH2 complex; Vmax is used here. 			
+K2	=	500	;	        %	The rate constant for ISP.QH2-->QH(semi) + ISPH(red)	
+K3	=	5 * 10^7	;	%	The rate constant for QH. + cytbL --> Q + cytbL- + H+;
+K4	=	5 * 10^7	;	%	The rate constant for cytbL- + cytbH --> cytbL + cytbH-			
+K5	=	5 * 10^7	;	%	The rate constant for CytbH- + Q --> cytbH + Q-			
 
-K6	=	5 * 10^7*BFRatio(6)	;	%	The rate constant  for CytbH- + Q- --> cytbH + Q2-			
-K7	=	10^4*BFRatio(7)	;	%	The rate constant for Q binding to Qi site			
-K8	=	1000*BFRatio(8)	;	%	The rate constant for ISPH + CytC1 --> ISPH(ox) + CytC1+			
-K9	=	8.3 * 10^6*BFRatio(9)	;	%	The rate constant for the electron transport from cytc1 to cytc2			
-K10	=	8 * 10 ^ 8*BFRatio(10)	;	%	The rate constant for the electron transport from cytc2 to P700			
+K6	=	5 * 10^7	;	%	The rate constant  for CytbH- + Q- --> cytbH + Q2-			
+K7	=	10^4	;	%	The rate constant for Q binding to Qi site			
+K8	=	1000	;	%	The rate constant for ISPH + CytC1 --> ISPH(ox) + CytC1+			
+K9	=	8.3 * 10^6	;	%	The rate constant for the electron transport from cytc1 to cytc2			
+K10	=	8 * 10 ^ 8	;	%	The rate constant for the electron transport from cytc2 to P700			
 
-Vmax11	=	6 *BFRatio(11);	%	The maximum rate of ATP synthesis; unit: mmol l-1 s-1; default 1.47; 			
-Kqi	=	10^ 3*BFRatio(12)	;	    %	The rate constant for the uptake of 2 protons from stroma; Unit: s-1; the calculation is done based on a simplified assumption of first order kinetics for these reaction. The half time for the uptake of two protons is assumed, following Crofts "http://pop.life.uiuc.edu/~a-crofts/ahab/qcycle1.html"--The modified Q cycle, as <150 microsecond. 150 microsecond is used as an estimate of the halftime for this electron transfer. 			
+Vmax11	=	6 *cATPsyn;	%	WY201803 The maximum rate of ATP synthesis; unit: mmol l-1 s-1; default 1.47; 			
+Kqi	=	10^ 3	;	    %	The rate constant for the uptake of 2 protons from stroma; Unit: s-1; the calculation is done based on a simplified assumption of first order kinetics for these reaction. The half time for the uptake of two protons is assumed, following Crofts "http://pop.life.uiuc.edu/~a-crofts/ahab/qcycle1.html"--The modified Q cycle, as <150 microsecond. 150 microsecond is used as an estimate of the halftime for this electron transfer. 			
 
 PMODTEM = 1; 
-PK	=	3.6 * 10^(-8)	* PMODTEM*BFRatio(13);	%	The permeability constant for K, cm s-1			   
-PMg	=	3.6 * 10^(-8)	* PMODTEM*BFRatio(14);	%	The permeability constant for Mg, cm s-1			
-PCl	=	1.8 * 10^(-8)	* PMODTEM*BFRatio(15);	%	The permeability constant for Cl, cm s-1			
+PK	=	3.6 * 10^(-8)	* PMODTEM;	%	The permeability constant for K, cm s-1			   
+PMg	=	3.6 * 10^(-8)	* PMODTEM;	%	The permeability constant for Mg, cm s-1			
+PCl	=	1.8 * 10^(-8)	* PMODTEM;	%	The permeability constant for Cl, cm s-1			
 
-Kau	=	10^10*BFRatio(16)	;	%	The rate constant for exciton transfer from perpheral antenna to core antenna, see FI, unit: s-1			
-Kua	=	10^10	*BFRatio(17);	%	The rate constant for exciton transfer from core antenna to peripheral antenna, SEE FI, unit: s-1			
-Kf	=	6.3 * 10 ^6	*BFRatio(18);	%	The rate constant for fluorescence emission, see the note in FI, unit: s-1			
-Kd 	=	2 * 10^8*BFRatio(19)	;	%	The rate constant for heat dissipation; see the note for FI, unit: s-1			
+Kau	=	10^10	;	%	The rate constant for exciton transfer from perpheral antenna to core antenna, see FI, unit: s-1			
+Kua	=	10^10	;	%	The rate constant for exciton transfer from core antenna to peripheral antenna, SEE FI, unit: s-1			
+Kf	=	6.3 * 10 ^6	;	%	The rate constant for fluorescence emission, see the note in FI, unit: s-1			
+Kd 	=	2 * 10^8	;	%	The rate constant for heat dissipation; see the note for FI, unit: s-1			
 
-K15	=	10^10*BFRatio(20)	;	%	The rate constant for the primary charge sepration in PSI, assuming the half time 30ps, unit: s-1			
-K16	=	10^5*BFRatio(21);	%	The rate constant for the electron transfer from electron acceptor A- to Fd, unit: s-1; following reference of Setif PQ and Bottin H, 1995, Biochemistry.			
+K15	=	10^10*CPSi	;	%	WY 201803 The rate constant for the primary charge sepration in PSI, assuming the half time 30ps, unit: s-1			
+K16	=	10^5	;	%	The rate constant for the electron transfer from electron acceptor A- to Fd, unit: s-1; following reference of Setif PQ and Bottin H, 1995, Biochemistry.			
 
-Em_ISP	    =	0.31*BFRatio(22)	;	%	The midpoint potential fo ISP; unit: V			
-Em_CytC1	=	0.27*BFRatio(23)	;	%	The midpoint potential for cytc1; unit: V			
-Em_CytbL	=	-0.09*BFRatio(24)	;	%	The midpoint potential for cytbL; unit: V			
-Em_CytbH	=	0.05*BFRatio(25)	;	%	The midpoint potential for cytbH; UNIT: V			
-Em_CytC2	=	0.35*BFRatio(26)	;	%	The midpoint potential for cytc2, unit: V			
+Em_ISP	    =	0.31	;	%	The midpoint potential fo ISP; unit: V			
+Em_CytC1	=	0.27	;	%	The midpoint potential for cytc1; unit: V			
+Em_CytbL	=	-0.09	;	%	The midpoint potential for cytbL; unit: V			
+Em_CytbH	=	0.05	;	%	The midpoint potential for cytbH; UNIT: V			
+Em_CytC2	=	0.35	;	%	The midpoint potential for cytc2, unit: V			
 
 % ISPHr + cytc1 --> ISPHox + cytc1-					
 DeltaEm	 = 	Em_CytC1 - Em_ISP	;	
@@ -70,21 +76,42 @@ DeltaG	=	DeltaEm *(-9.649) * 10^4 	;
 RT = 8.314 * 298;      				
 KE9	=	exp(-DeltaG/RT)	;		
 
-MemCap	=	0.6 * 10^(-6)*BFRatio(27)	;	%	The membrane capacity, microFarady/cm2.
-RVA	    =	8*10^(-10)*BFRatio(28)	    ;	%	THe ratio of the lumen volume to thylakoid membrane; unit: L/cm2. The data from Cruz 2001.
+MemCap	=	0.6 * 10^(-6)	;	%	The membrane capacity, microFarady/cm2.
+RVA	    =	8*10^(-10)	    ;	%	THe ratio of the lumen volume to thylakoid membrane; unit: L/cm2. The data from Cruz 2001.
 
-KBs	=	1.1*10^(-8)*BFRatio(29)	;	    %	The buffer equilibrium constant
-KBl	=	5.1 * 10^(-6)*BFRatio(30)	;	%	The buffer equilibrium constant
+KBs	=	1.1*10^(-8)	;	    %	The buffer equilibrium constant
+KBl	=	5.1 * 10^(-6)	;	%	The buffer equilibrium constant
 
-KM1ATP  = 0.12*BFRatio(31);
-KM1ADP  = 0.014*BFRatio(32);            % Originally 
-KM1PI   = 0.3*BFRatio(33);              % Originally 
+KM1ATP  = 0.12;
+KM1ADP  = 0.014;            % Originally 
+KM1PI   = 0.3;              % Originally 
 
 
-KM2NADP = 0.05*BFRatio(34);     % From Fridlyand and Scheibe 1999
-KM2NADPH= 0.035*BFRatio(35);    % From Fridlyand and Scheibe 1999
-V2M = 27.8*BFRatio(36);     % Calcualted based on 6.4 mmol (mg chl)-1h-1; Unit: mmol/l/s;
-KE2 = 495*BFRatio(37);          % From Fridlyand paper , 1999, BBA, 1413, 1, 31-42
+KM2NADP = 0.05;     % From Fridlyand and Scheibe 1999
+KM2NADPH= 0.035;    % From Fridlyand and Scheibe 1999
+V2M = 27.8*cNADPHsyn;%WY 201803     % Calcualted based on 6.4 mmol (mg chl)-1h-1; Unit: mmol/l/s;
+KE2 = 495;          % From Fridlyand paper , 1999, BBA, 1413, 1, 31-42
+
+
+K1=BFVmax(1);
+K2=BFVmax(2);
+K3=BFVmax(3);
+K4=BFVmax(4);
+K5=BFVmax(5);
+K6=BFVmax(6);
+K7=BFVmax(7);
+K8=BFVmax(8);
+K9=BFVmax(9);
+K10=BFVmax(10);
+Vmax11=BFVmax(11)*cATPsyn;;
+Kau=BFVmax(12);
+Kua=BFVmax(13);
+Kf=BFVmax(14);
+Kd=BFVmax(15);
+K15=BFVmax(16)*CPSi;
+K16=BFVmax(17);
+V2M=BFVmax(18)*cNADPHsyn;
+
 
 % The rate constant used in the model											
 global BF_RC;
@@ -218,20 +245,20 @@ BF_con	(	29	)	=	NADPH	;	%	The NADPH concentration in stroma, Unit: mmol l-1;
 
 % Assigning the pool variables
 %	The sizes of different pools in the model						
-Tcyt	=	1*BFRatio(38)		;	%	Unit: micromole m-2	The total concentration of cytochrome. It is assumed that the concentration of cytbL, cytbH, and cytc1 is equal as Tcyt.
-Tcytc2	=	1*BFRatio(39)		;	%	Unit: micromole m-2	The total concentration of cytc2, as Tcyt , the unit is micromole per meter square leaf area
-TK	=	20*BFRatio(40)		;	%	Unit: mmol l-1	The total concentration of potassium, 180 mM, in the bigining assuming the concentration of ions in stroma and lumen are same
-TMg	=	10*BFRatio(41)		;	%	Unit: mmol l-1	The total concentraiton of Mg2+, 18 mM, in the beginning assuming the concentration of the ions in the stroma and lumen are same
-TCl	=	2*BFRatio(42);%1		;	%	Unit: mmol l-1	The total concentraiton of Cl-, 1 mM, assuming equal concentrations of ion concentrations in stroma and lumen in the beginning. 
-TFd	=	1*BFRatio(43)		;	%	Unit: micromole m-2	The total concentration of Ferrodoxin, this assumed that only 1 Fd is associated with one PSI unit.
-TA	=	1*BFRatio(44)		;	%	Unit: micromole m-2	The total concentration of electron acceptor of PSI
-TQ	=	8*BFRatio(45)		;	%	Unit: micromole m-2	The total concentration of quinone at all different states
-BFTs	=	38*BFRatio(46)		;	%	Unit: mmol l-1	The total concentration of buffer in stroma; 
-BFTl	=	38*BFRatio(47)		;	%	Unit: mmol l-1	The total concentration of buffer in lumen
+Tcyt	=	1		;	%	Unit: micromole m-2	The total concentration of cytochrome. It is assumed that the concentration of cytbL, cytbH, and cytc1 is equal as Tcyt.
+Tcytc2	=	1		;	%	Unit: micromole m-2	The total concentration of cytc2, as Tcyt , the unit is micromole per meter square leaf area
+TK	=	20		;	%	Unit: mmol l-1	The total concentration of potassium, 180 mM, in the bigining assuming the concentration of ions in stroma and lumen are same
+TMg	=	10		;	%	Unit: mmol l-1	The total concentraiton of Mg2+, 18 mM, in the beginning assuming the concentration of the ions in the stroma and lumen are same
+TCl	=	2;%1		;	%	Unit: mmol l-1	The total concentraiton of Cl-, 1 mM, assuming equal concentrations of ion concentrations in stroma and lumen in the beginning. 
+TFd	=	1		;	%	Unit: micromole m-2	The total concentration of Ferrodoxin, this assumed that only 1 Fd is associated with one PSI unit.
+TA	=	1		;	%	Unit: micromole m-2	The total concentration of electron acceptor of PSI
+TQ	=	8		;	%	Unit: micromole m-2	The total concentration of quinone at all different states
+BFTs	=	38		;	%	Unit: mmol l-1	The total concentration of buffer in stroma; 
+BFTl	=	38		;	%	Unit: mmol l-1	The total concentration of buffer in lumen
 
 
-P700T   =   1*BFRatio(48)       ;   %   %   The total number of P700 unit: micromole m-2 leaf area				
-NADPHT  =   1*BFRatio(49);      %   The total concentration of NADPH in stroma; 1 is an guessed value;
+P700T   =   1       ;   %   %   The total number of P700 unit: micromole m-2 leaf area				
+NADPHT  =   1;      %   The total concentration of NADPH in stroma; 1 is an guessed value;
 
 %	Assign the pools to the global pool variables		
 

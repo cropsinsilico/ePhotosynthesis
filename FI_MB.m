@@ -33,9 +33,10 @@ function FI_mb = FI_Mb(t,FI_Con,FI_Param)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Calculate the rates first   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-global GLight;
-fini = Condition (t);
-light = GLight;
+%global GLight;
+global LI;
+%fini = Condition (t);
+light = LI*30;
 
 FI_Param(1) = light;
 

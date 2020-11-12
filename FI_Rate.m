@@ -282,11 +282,7 @@ FI_VEL	(	FI_TIME_N	,	51	)	=	vr2_00_2;
 FI_VEL	(	FI_TIME_N	,	52	)	=	vr2_01_2;
 FI_VEL	(	FI_TIME_N	,	53	)	=	vr2_02_2;
 FI_VEL	(	FI_TIME_N	,	54	)	=	vr2_2;
-FI_VEL	(	FI_TIME_N	,	55	)		=	vP680qU	;	%	vr2_2	
-FI_VEL	(	FI_TIME_N	,	56	)	=	vP680qA	;	%	vr2_2	
-FI_VEL	(	FI_TIME_N	,	57	)	 =   vU_P680;
-FI_VEL	(	FI_TIME_N	,	58	)	  =   vP680_d;
-FI_VEL	(	FI_TIME_N	,	59	)	   =   vP680_f;							
+							
 
 FI_CON(FI_TIME_N,1) = t;
 FI_CON(FI_TIME_N,2) = f;

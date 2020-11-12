@@ -21,10 +21,8 @@
 %    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 % PS_PR_Titl.m
-% This is the routine that give titles for the output of the functions.
+% This is the routine that give titles for each graph. 
 
 function suc = PS_PR_Titl(m,p,n)
 
@@ -74,8 +72,6 @@ elseif m==22
     title('HPR_c');
 elseif m==23
     title('GCEA_c');
-elseif m==24
-    title('ADPG');
 end
     xlabel('time(s)');
     ylabel('Concentration(mM)');

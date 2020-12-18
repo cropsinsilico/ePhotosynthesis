@@ -25,8 +25,8 @@
 
 
 function SUCS_Vel = SUCS_Rate(t,SUCS_Con, SUCS_Param)
-global SUCRatio;
-%global SUCS_RC;
+
+global SUCS_RC;
 
 light = SUCS_Param(1);
 
@@ -181,9 +181,9 @@ Km591n = Km591 * (1 + PGAc/0.28);
 
 SUCSV59n = SUCSV59;
 
-Km591 = 5*SUCRatio(61); 
+Km591 = 5; 
 
-KmF6P = 0.55*SUCRatio(62);
+KmF6P = 0.55;
 Km593 = KmF6P ;       
 
 temp59 = (F6Pc + Km593 ) * (ATPc + Km591 * (1 + ADPc/KI591));        % This is the orginal equation
@@ -196,9 +196,9 @@ v62 = SUCSV62 * SUC/(SUC + Km621);
 
 Vmatpf  = 0;   
 vatpf = 0;      
-Km_in=0.6*SUCRatio(63);
-vdhap_in = SUCSVdhap_in * Pic/(Pic + Km_in) ;
-vgap_in  = SUCSVgap_in * Pic/(Pic + Km_in);
+
+vdhap_in = SUCSVdhap_in * Pic/(Pic + 0.6) ;
+vgap_in  = SUCSVgap_in * Pic/(Pic + 0.6);
 
 global PSPR_SUCS_com;
 
@@ -211,11 +211,8 @@ else
        	vpga_in = 0;
         vpga_use =0;
     else
-        Vpga_u=1.05*SUCRatio(64);
-        Kmpga_u=0.6*SUCRatio(65);
-        Kmpga_in=0.6*SUCRatio(66);
-        vpga_use = PGAc * Vpga_u/(PGAc + Kmpga_u);    % WY201803   
-       	vpga_in = SUCSVpga_in * Pic/(Pic + Kmpga_in);   % WY201803   
+        vpga_use = PGAc * 1.05/(PGAc + 0.6);    % WY201803   
+       	vpga_in = SUCSVpga_in * Pic/(Pic + 0.6);   % WY201803   
     end
 end
 

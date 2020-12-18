@@ -23,7 +23,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [XanCycle_Con] = XanCycle_Ini
-global XanRatio;
+
 global XanCycle_kva;
 global XanCycle_kaz;
 global XanCycle_kza;
@@ -32,10 +32,10 @@ global XanCycle_kvf;
 global XanCycle_kv2ABA;
 global XanCycle_kABAdg;
 
-XanCycle_kva = 0.163/60*XanRatio(1);     % Ruth Frommolt et a; 2001; Planta
-XanCycle_kaz = 0.691/60*XanRatio(2);     % Ruth Frommolt et a; 2001; Planta
-XanCycle_kza = 0.119/60*XanRatio(3);     % Ruth Frommolt et a; 2001; Planta
-XanCycle_kav = 0.119/60*XanRatio(4);     % Ruth Frommolt et a; 2001; Planta. This is not given in the paper. Therefore, teh value is really an educated guess. 
+XanCycle_kva = 0.163/60;     % Ruth Frommolt et a; 2001; Planta
+XanCycle_kaz = 0.691/60;     % Ruth Frommolt et a; 2001; Planta
+XanCycle_kza = 0.119/60;     % Ruth Frommolt et a; 2001; Planta
+XanCycle_kav = 0.119/60;     % Ruth Frommolt et a; 2001; Planta. This is not given in the paper. Therefore, teh value is really an educated guess. 
 
 XanCycle_kvf = 0;            % This is the rate of formation of v from its precursors, reprenting the net generation of new V.
 XanCycle_kv2ABA = 0;         % This represent the rate constant of conversion from v to ABA. This is just a guess. 

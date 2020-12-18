@@ -66,11 +66,8 @@ global BF2trDynaPS_vbfn2;
 
 global BF2TrDynaPSMB_vcet; 
 global AVR;        
-%global PRGlu;
-%%%WY201804
-Temp = RROEA_DYDT(9) - RROEA2trDynaPS_ve2Fd + BF2RROEA_Vbf16/AVR + RROEA2trDynaPS_veFd2Calvin - BF2trDynaPS_vbfn2 - BF2TrDynaPSMB_vcet/AVR;
-%Temp = RROEA_DYDT(9) - RROEA2trDynaPS_ve2Fd + BF2RROEA_Vbf16/AVR + RROEA2trDynaPS_veFd2Calvin - BF2trDynaPS_vbfn2 - BF2TrDynaPSMB_vcet/AVR-PRGlu/AVR;
 
+Temp = RROEA_DYDT(9) - RROEA2trDynaPS_ve2Fd + BF2RROEA_Vbf16/AVR + RROEA2trDynaPS_veFd2Calvin - BF2trDynaPS_vbfn2 - BF2TrDynaPSMB_vcet/AVR;
 trDynaPS_DYDT(119) = Temp * AVR;
 trDynaPS_DYDT(24) = Temp * AVR; 
 GenOut (t); 

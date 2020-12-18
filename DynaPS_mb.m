@@ -54,7 +54,7 @@ XanCycle_DYDT = XanCycle_mb(t, XanCycle_Con, XanCycle_Param);
 % Here get the rate of Thioredoxin reduction and oxidation and use it to construct the differential equation for both thio and fd. 
 
 DynaPS_DYDT = zeros(10,1);
-%global PRGlu;
+
 for index = 1:92
     DynaPS_DYDT(index) = RA_DYDT(index);
 end
@@ -62,5 +62,3 @@ end
 for index = 1:4
     DynaPS_DYDT(index+92) = XanCycle_DYDT(index);
 end
-% Temp = DynaPS_DYDT(24) -2*PRGlu;
-%DynaPS_DYDT(24) = Temp; 

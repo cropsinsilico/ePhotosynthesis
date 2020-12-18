@@ -24,7 +24,6 @@
 
 
 function CM_DYDT = CM_mb(t, CM_Con, PS_PR_Param, SUCS_Param)
-global TestSucPath;
 
 for m = 1:23
     PSPR_Con(m) = CM_Con(m);
@@ -61,13 +60,8 @@ global SUCS2CM_vdhap;       % The rate of import into the cytosol
 global SUCS2CM_vgap;        % The rate of import into the cytosol
 vdhap_ins = SUCS2CM_vdhap		    ;   %	DHAP IN
 vgap_ins  = SUCS2CM_vgap			;   %	GAP IN
-if TestSucPath==1
-SUCS_DYDT(1)   =	SUCS_DYDT(1) + vdhap + vgap -(vdhap_ins + vgap_ins);
-end
-if TestSucPath==0
-SUCS_DYDT(1) =SUCS_DYDT(1)  ;
-end
-%;   %	T3Pc WY1905
+
+SUCS_DYDT(1)   =	SUCS_DYDT(1) + vdhap + vgap -(vdhap_ins + vgap_ins) 		;   %	T3Pc 
 CM_DYDT(24) = SUCS_DYDT(1);   
 
 

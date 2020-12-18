@@ -25,7 +25,7 @@
 
 
 function PSr = PSRate(t,PSs,Param)
-global PSRatio;
+
 
 global PS_C_CA;             %   Global constant for the total adenylates
 global PS_C_CP;             %   Global constant for the total phosphate
@@ -378,10 +378,6 @@ end
 
 DHAP=  T3P/(1+KE4);
 GAP =  KE4*T3P/(1+KE4);
-%%%%%%%%%%%%%%%%%%%%%%%%%
-% DHAP=  T3P*KE4/(1+KE4); %%WY201803
-% GAP =  T3P/(1+KE4);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ATPreg = DHAP/3;         % If there is no regulation of enzyme activity, some forcing needed to be added. 
 if ATPreg >1
@@ -440,14 +436,14 @@ v3 = PsV3 * DPGA * NADPH/((DPGA+PsKM31a)*(NADPH+PsKM32b));
 v5 = PsV5 * (GAP * DHAP-FBP/PsKE5)/((PsKM51*PsKM52)*(1+GAP/PsKM51+DHAP/PsKM52+FBP/PsKM53+GAP*DHAP/(PsKM51*PsKM52)));
 v8 = PsV8 * (DHAP *E4P-SBP/PsKE8)/((E4P+PsKM82)*(DHAP + PsKM81));
 
-KE57 = 1.005 * 0.1*PSRatio(94);
-Km8p5p = 0.118*PSRatio(95);
-Km5p5p = 0.616*PSRatio(96);
-KE810 = 0.8446*PSRatio(97);
-Km5gap = 0.2727*PSRatio(98);
-Km8f6p = 0.5443*PSRatio(99);
-Km8s7p = 0.01576*PSRatio(100);
-Km8gap = 0.09*PSRatio(101);
+KE57 = 1.005 * 0.1;
+Km8p5p = 0.118;
+Km5p5p = 0.616;
+KE810 = 0.8446;
+Km5gap = 0.2727;
+Km8f6p = 0.5443;
+Km8s7p = 0.01576;
+Km8gap = 0.09;
 Den = 1 + (1+GAP/Km5gap)*(F6P/Km8f6p+S7P/Km8s7p)+GAP/Km8gap + 1/Km8p5p*(Xu5P*(1+E4P*Ri5P/Km5p5p)+E4P+Ri5P);
 
 v7 = PsV7 * (F6P * GAP *KE57 - E4P * Xu5P)/(Km8p5p*Km5p5p*Den);
@@ -471,20 +467,15 @@ v24num = PsV24 * (ADPG);                % Similar to the argument for reaction 2
 v24dem = PsKM241 * (1+ ADPG/PsKM241);
 v24 = v24num/v24dem;
 
-MaxCoeff = 5*PSRatio(102); 
-V25max =  0.5*PSRatio(103)/100/5; %WY201803
+MaxCoeff = 5; 
+V25max =  0.5; 
 
 v25 = V25max * (1- RuBP/MaxCoeff) * ATP/(ATP + 1); 
-%WY201803
-% N = 1 + (1+ PsKM313/PsPEXT)*(Pi/PsKM312+PGA/PsKM32+GAP/PsKM33+DHAP/PsKM311);
-% v31 = PsV31 * DHAP/(N*PsKM311)  ;
-% v32 = PsV32 * PGA/(N*PsKM32);
-% v33 = PsV33 * GAP/(N * PsKM33);
-% 
-v31= PsV31 * DHAP/(DHAP+PsKM311)*PsPEXT/(PsPEXT+ PsKM313);
-v32 = PsV32 * PGA/(PGA+PsKM32)*PsPEXT/(PsPEXT+ PsKM313);
-v33 = PsV33 * GAP/(GAP+PsKM33)*PsPEXT/(PsPEXT+ PsKM313);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+N = 1 + (1+ PsKM313/PsPEXT)*(Pi/PsKM312+PGA/PsKM32+GAP/PsKM33+DHAP/PsKM311);
+v31 = PsV31 * DHAP/(N*PsKM311)  ;
+v32 = PsV32 * PGA/(N*PsKM32);
+v33 = PsV33 * GAP/(N * PsKM33);
+
 v31 = v31 * ATPreg ;
 v32 = v32 * ATPreg ;
 v33 = v33 * ATPreg ;

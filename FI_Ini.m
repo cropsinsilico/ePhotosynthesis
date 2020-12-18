@@ -28,7 +28,7 @@
 % concentration of components of photosystems.
 
 function FI_Con = FI_Ini(begin)
-global FIRatio;
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Initilization of the rate constant %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,29 +38,29 @@ global FIRatio;
 % The rate constant used in the model									
 						% Reference			
                         
-kA_d	=	2*10^8*FIRatio(1);	%	The rate constant of heat dissipation from peripheral antenna	Lazar (1999), 0.25~1 *10^(9)			
-kA_f	=	6.3 *10^6 *0.2	*FIRatio(2);	%	The rate constant of fluorescence emission from peripheral antenna; based on the fact that the natural lifetime of chlorophyll a is 15.9 ns; This value is correct and should not be changed by any.
-kA_U	=	10^10*FIRatio(3)	;	%	The rate constant of exciton transfer from periphral antenna to core antenna	Reference needed, a guess			
-kU_A	=	10^10*FIRatio(4)	;	%	The rate constant of exciton transfer from core antenna to peripheral antenna	Reference needed, a guess			
-kU_d	=	2*10^8*FIRatio(5)	;	%	The rate constant of the heat dissipation from core antenna; Laverage and Trissl, 1995				
-kU_f	=	6.3 *10^6 *0.2*FIRatio(6)		;	% 	The rate constant of the fluorescence emission from the core antenna; Laverage and Trissl 1995				
+kA_d	=	2*10^8	;	%	The rate constant of heat dissipation from peripheral antenna	Lazar (1999), 0.25~1 *10^(9)			
+kA_f	=	6.3 *10^6 *0.2	;	%	The rate constant of fluorescence emission from peripheral antenna; based on the fact that the natural lifetime of chlorophyll a is 15.9 ns; This value is correct and should not be changed by any.
+kA_U	=	10^10	;	%	The rate constant of exciton transfer from periphral antenna to core antenna	Reference needed, a guess			
+kU_A	=	10^10	;	%	The rate constant of exciton transfer from core antenna to peripheral antenna	Reference needed, a guess			
+kU_d	=	2*10^8	;	%	The rate constant of the heat dissipation from core antenna; Laverage and Trissl, 1995				
+kU_f	=	6.3 *10^6 *0.2		;	% 	The rate constant of the fluorescence emission from the core antenna; Laverage and Trissl 1995				
 
-k1	=	2.5 * 10^11*FIRatio(7)	;	%	The rate constant of primary charge separation for open reaction center				
-k_r1	=	3*10^8*FIRatio(8)	;	%	The rate constant of charge recombination for open reactoin center; Lazar, 1999;				
-kz	=	5*10^6*FIRatio(9)	;	%	The rate constant of the Tyrosine oxidation	Lazar (1999); 3.8~50 * 10^6 			
-k12	=	30000*FIRatio(10)	;	%	The rate constant of the S1 to S2 transition	Lazar (1999); 0.667~33.3 * 10^3			
-k23	=	10000*FIRatio(11)	;	%	The rate constant of the S2 to S3 transition	Lazar (1999); 0.667~33.3 * 10^3			
-k30	=	3000*FIRatio(12)	;	%	The rate constant of the S3 to S0 transition	Lazar (1999); 0.667~33.3 * 10^3			
-k01	=	500*FIRatio(13)	;	%	The rate constant of the S0 to S1 transition	Lazar (1999); 0.667~33.3 * 10^3			
+k1	=	2.5 * 10^11	;	%	The rate constant of primary charge separation for open reaction center				
+k_r1	=	3*10^8	;	%	The rate constant of charge recombination for open reactoin center; Lazar, 1999;				
+kz	=	5*10^6	;	%	The rate constant of the Tyrosine oxidation	Lazar (1999); 3.8~50 * 10^6 			
+k12	=	30000	;	%	The rate constant of the S1 to S2 transition	Lazar (1999); 0.667~33.3 * 10^3			
+k23	=	10000	;	%	The rate constant of the S2 to S3 transition	Lazar (1999); 0.667~33.3 * 10^3			
+k30	=	3000	;	%	The rate constant of the S3 to S0 transition	Lazar (1999); 0.667~33.3 * 10^3			
+k01	=	500	;	%	The rate constant of the S0 to S1 transition	Lazar (1999); 0.667~33.3 * 10^3			
 
-k2	    =	2*10^9*FIRatio(14)	;	%	The rate constant of the QA reduction by Pheo-	Lazar (1999); 2~2.3 * 10^9			
-kAB1	=	2500*FIRatio(15)	;	%	The rate constant of QAQB-->QAQB-	Lazar (1999); 2.5~5 * 10^3			
-kBA1	=	200*FIRatio(16)	;	%	The rate constant of the QAQB- -->QAQB	Lazar (1999)			
-kAB2	=	3300*FIRatio(17)	;	%	The rate constant of the QAQB- --> QAQB2-	Lazar (1999); 1.25~3.33 * 10^3			
-kBA2	=	250*FIRatio(18)	;	%	The rate constant of the QAQB2- --> QAQB- 	Lazar (1999), or same as kAB2 depend on the equilibium constant			
-k3	    =	800	*FIRatio(19);	%	The rate constant of the exchange of PQ and QBH2	Lazar (1999),0.12~1 for the fast PQ pool,  or 3~8 for the slow recycling PQ pool			
-k_r3	=	80	*FIRatio(20);	%	The rate constant of the exchange of QB and PQH2	Lazar (1999), since the equilibrium constant is 1 (205 in Lazar, 1999) 			
-k_pq_oxy=	500	*FIRatio(21);	%	The rate constant of the PQH2 oxidation	Lazar (1999),50~500			
+k2	    =	2*10^9	;	%	The rate constant of the QA reduction by Pheo-	Lazar (1999); 2~2.3 * 10^9			
+kAB1	=	2500	;	%	The rate constant of QAQB-->QAQB-	Lazar (1999); 2.5~5 * 10^3			
+kBA1	=	200	;	%	The rate constant of the QAQB- -->QAQB	Lazar (1999)			
+kAB2	=	3300	;	%	The rate constant of the QAQB- --> QAQB2-	Lazar (1999); 1.25~3.33 * 10^3			
+kBA2	=	250	;	%	The rate constant of the QAQB2- --> QAQB- 	Lazar (1999), or same as kAB2 depend on the equilibium constant			
+k3	    =	800	;	%	The rate constant of the exchange of PQ and QBH2	Lazar (1999),0.12~1 for the fast PQ pool,  or 3~8 for the slow recycling PQ pool			
+k_r3	=	80	;	%	The rate constant of the exchange of QB and PQH2	Lazar (1999), since the equilibrium constant is 1 (205 in Lazar, 1999) 			
+k_pq_oxy=	500	;	%	The rate constant of the PQH2 oxidation	Lazar (1999),50~500			
 
 % The rate constant used in the model											
 global FI_RC;
@@ -153,8 +153,8 @@ FI_Con	(	21	)	=	QAnQB2n	;	% 	The concentration of [QA-QB2-];
 FI_Con	(	22	)	=	PQn	;	%	The concentration of reduced PQ, i.e. PQH2;
 
 global FI_Pool;
-QBt =   1*FIRatio(22);          % The total concentration of Qb site;
-PQT =   8*FIRatio(23);          % The total concentration of PQ;
+QBt =   1;          % The total concentration of Qb site;
+PQT =   8;          % The total concentration of PQ;
 
 FI_Pool(1) = QBt;
 FI_Pool(2)  =   PQT;

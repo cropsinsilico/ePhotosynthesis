@@ -30,8 +30,7 @@
 % second part contains the detailed conditions for different time period.
 
 function fini = Condition (t)
-global TestCa;
-global TestLi;
+
 global RUBISCOMETHOD;         % The method for calculation of Rubisco catalyzed reaction
 RUBISCOMETHOD = 2;          % 1: Use enzyme concentration for calculation
                             % 2: Use the michaelis menton and enzyme together for calculation
@@ -48,14 +47,14 @@ global V16;
 global Temp_cond;
 
 global Cond_V16;        % This variable is transfered from PSInitial for modificatin of V16, the rate of ATP synthesis. 
-CO2Temp = TestCa*0.7;%280;          % CO2 concentation  % ppm
+CO2Temp = 280;          % CO2 concentation  % ppm
 O2Temp = 0.21;          % O2 concentration  %default is 0.21, i.e. 21%. 
 
 CO2_cond = CO2Temp /(3 * 10^4);
 O2_cond = O2Temp*1.26;
 Temp_cond = 25;
 
-light =  TestLi*0.85*0.85;  % light umol m-2 s-1      
+light = 600;  % light umol m-2 s-1      
 
 % Here the time dependent variable is regulated. 
 global tglobal;

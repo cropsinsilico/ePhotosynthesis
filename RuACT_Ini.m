@@ -25,28 +25,27 @@
 
 
 function RuACT_Con = RuACT_Ini(begin)
-global RacRatio;	
-k1	=	0.006*RacRatio(1)	;	%	The rate constant of the activation of the Rubisco bound with RuBP. This step is associated with the ARubisco activase content or activity;
+		
+k1	=	0.006	;	%	The rate constant of the activation of the Rubisco bound with RuBP. This step is associated with the ARubisco activase content or activity;
 
-kn1	=	1.6 * 10^(-3)*RacRatio(2)	; 
+kn1	=	1.6 * 10^(-3)	; 
 
 
-km1	=	20 * 10 ^ ( -6)	*RacRatio(3);	 
+km1	=	20 * 10 ^ ( -6)	;	 
 
-Ke2	=	0.1	*RacRatio(4);	    	
-Ke3	=	1.600*RacRatio(5)	;	 	
+Ke2	=	0.1	;	    	
+Ke3	=	1.600	;	 	
 
-k6	=	2.5  *RacRatio(6)*4/3;	 		%WY201803 %Rubisco activity initial=80; max=120
-%k6	=	15.5/4  *RacRatio(6);	 		%WY201806
+k6	=	2.5  	;	 		
 
-kc	=	0.016*RacRatio(7)	;	%	Michaelis menton constant for CO2, 0.016 mM				
-ko	=	0.448*RacRatio(8)	;	%	Michaelis menton constant for O2, .448 mM				
+kc	=	0.016	;	%	Michaelis menton constant for CO2, 0.016 mM				
+ko	=	0.448	;	%	Michaelis menton constant for O2, .448 mM				
 
-k7	=	k6 * 10*RacRatio(9);	%	The rate constant for ecm to ecmr		mM-1 s-1   
-kr	=	20 * 10^(-3)*RacRatio(10)	;	
+k7	=	k6 * 10;	%	The rate constant for ecm to ecmr		mM-1 s-1   
+kr	=	20 * 10^(-3)	;	
 
 global activase; 
-activase = 80*RacRatio(11); 
+activase = 80; 
 
 global RuACT_RC;
 RuACT_RC = zeros(5,1);
@@ -63,8 +62,7 @@ RuACT_RC	(	8	)	=	ko	;	%	Michaelis menton constant for O2
 RuACT_RC	(	9	)	=	k7	;	%	The rate constant for ecm to ecmr	
 RuACT_RC	(	10	)	=	kr	;	%	The apparaent michaelis menton constant for RuBP	
 
-%factor = 0.224/0.3;
-factor =1;
+factor = 1; 
 ER	=	0.05 * 4 *factor	;	% 	The concentration of inactive ER			
 Eaf	=	0.05 * 4 *factor	;	%	The total concentration of E, EC, AND ECM			
 ECMR	=	0.2	* 4 *factor;	% 	The concentration of ECMR			
@@ -85,11 +83,11 @@ RuACT_Con	(	2	)	=	Eaf	;	%	The total concentration of E, EC, AND ECM
 RuACT_Con	(	3	)	=	ECMR	;	%	The concentration of ECMR
 RuACT_Con	(	4	)	=	RuBP	;	%	The concentration of ECMR
 
-ET	=	0.3	  * 4  *factor*RacRatio(12) ;	    % 	The total concentraiton of E, ER, EC, ECM, ECMR	, mM	
-Rac	=	0.0056*RacRatio(13)	;	    %	The concentration of the activase, mM	
-C = 0.012*RacRatio(14);              %   mM
-O = 0.260*RacRatio(15);              %   mM
-M = 5*RacRatio(16);                   
+ET	=	0.3	  * 4   ;	    % 	The total concentraiton of E, ER, EC, ECM, ECMR	, mM	
+Rac	=	0.0056	;	    %	The concentration of the activase, mM	
+C = 0.012;              %   mM
+O = 0.260;              %   mM
+M = 5;                   
 
 global RuACT_Pool;		
 RuACT_Pool = zeros(2,1);	

@@ -24,7 +24,7 @@
 
 
  function SUCS_Con = SUCS_Ini(begin)
-global SUCRatio;
+ 
 global SUCS_OLD_TIME;
 global SUCS_TIME_N;
 global SUCS_VEL;
@@ -85,51 +85,51 @@ global 	KE61	;
 global 	Km621	;
 
 
-KE501	=	1/0.05*SUCRatio(16)	;	 
-Km511	=	0.02*SUCRatio(17)	;	 
-Km512	=	0.3*SUCRatio(18)	;	 
-Km513	=	0.4*SUCRatio(19)	;	 
-KE51	=	12*SUCRatio(20);      
-Km514	=	0.014*SUCRatio(21)	; 
-Km521	=	0.0025*SUCRatio(22)	;	 
-KI521	=	0.7*SUCRatio(23)	;	 
-KI522	=	12*SUCRatio(24)	;	 
-KI523	=	7*10^(-5)*SUCRatio(25);	 
-KE52	=	6663*SUCRatio(26)	;	 
-KE531	=	2.3*SUCRatio(27)	;	 
-KE541	=	0.0584*SUCRatio(28)	;	 
-Km551	=	0.14*SUCRatio(29)	;	 
-Km552	=	0.1*SUCRatio(30)	;	 
-Km553	=	0.11*SUCRatio(31)	;	 
-Km554	=	0.12*SUCRatio(32)	;	 
-KE55	=	0.31*SUCRatio(33)	; 
-Km561	=	0.8*SUCRatio(34)	;	 
-Km562	=	2.4*SUCRatio(35)	;	 
-KI561	=	0.7*SUCRatio(36);	 
-KI562	=	0.8*SUCRatio(37)	;	 
-KI563	=	0.4*SUCRatio(38)	;	 
-KI564	=	11*SUCRatio(39)	;	 
-KI565	=	50*SUCRatio(40)	;	 
-KE56	=	10*SUCRatio(41)	;	 
-Km571	=	0.35*SUCRatio(42);	 
-Ki572	=	10*SUCRatio(43)	;	 
-KE57	=	780*SUCRatio(44)	;	 
-Km581	=	0.032*SUCRatio(45);	 
-KI581	=	0.1*SUCRatio(46)	;	 
-KI582	=	0.5*SUCRatio(47)	;	 
-Km591	=	0.5*SUCRatio(48)	;	 
-Km592	=	0.021*SUCRatio(49);	 
-Km593	=	0.5*SUCRatio(50)	;	 
-KI591	=	0.16*SUCRatio(51);	 
-KI592	=	0.7*SUCRatio(52)	;	 
-KE59	=	590*SUCRatio(53)	;	 
-Km601	=	0.042*SUCRatio(54);	 
-Km602	=	1.66*SUCRatio(55);	 
-Km603	=	0.28*SUCRatio(56);	 
-Km604	=	16*SUCRatio(57)	;	 
-KE60	=	16*SUCRatio(58)	;	 
-KE61	=	1.2*107*SUCRatio(59);	 
-Km621	=	5*SUCRatio(60)	;	 
+KE501	=	1/0.05	;	 
+Km511	=	0.02	;	 
+Km512	=	0.3	;	 
+Km513	=	0.4	;	 
+KE51	=	12;      
+Km514	=	0.014	; 
+Km521	=	0.0025	;	 
+KI521	=	0.7	;	 
+KI522	=	12	;	 
+KI523	=	7*10^(-5)	;	 
+KE52	=	6663	;	 
+KE531	=	2.3	;	 
+KE541	=	0.0584	;	 
+Km551	=	0.14	;	 
+Km552	=	0.1	;	 
+Km553	=	0.11	;	 
+Km554	=	0.12	;	 
+KE55	=	0.31	; 
+Km561	=	0.8	;	 
+Km562	=	2.4	;	 
+KI561	=	0.7	;	 
+KI562	=	0.8	;	 
+KI563	=	0.4	;	 
+KI564	=	11	;	 
+KI565	=	50	;	 
+KE56	=	10	;	 
+Km571	=	0.35;	 
+Ki572	=	10	;	 
+KE57	=	780	;	 
+Km581	=	0.032;	 
+KI581	=	0.1	;	 
+KI582	=	0.5	;	 
+Km591	=	0.5	;	 
+Km592	=	0.021;	 
+Km593	=	0.5	;	 
+KI591	=	0.16;	 
+KI592	=	0.7	;	 
+KE59	=	590	;	 
+Km601	=	0.042;	 
+Km602	=	1.66;	 
+Km603	=	0.28;	 
+Km604	=	16	;	 
+KE60	=	16	;	 
+KE61	=	1.2*107;	 
+Km621	=	5	;	 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Initialization of the initial concentration of the different component %
@@ -186,12 +186,12 @@ if GP==0
 	
 	% Unit: mmol l-1 s-1;
 	
-	V51	=	0.107376831	* SC*SUCRatio(1)	;%	DHAP+GAP --FBP          % default 0.5
-	V52	=	0.063979048	* SC*SUCRatio(2)	;	%	FBP --F6P + Pi
-	V55	=	0.115403205	* SC*SUCRatio(3);	%	G1P+UTP --OPOP+UDPG 
-	V56	=	0.055503446	* SC*SUCRatio(4)	;	%	UDPG+F6P--SUCP + UDP
-	V57	=	0.55503446	* SC1*SUCRatio(5);	%	SUCP--Pi + SUC; 0.27 DEFALT
-	V58	=	0.016819226	* SC*SUCRatio(6);	%	F26BP--F6P + Pi
+	V51	=	0.107376831	* SC	;%	DHAP+GAP --FBP          % default 0.5
+	V52	=	0.063979048	* SC	;	%	FBP --F6P + Pi
+	V55	=	0.115403205	* SC;	%	G1P+UTP --OPOP+UDPG 
+	V56	=	0.055503446	* SC	;	%	UDPG+F6P--SUCP + UDP
+	V57	=	0.55503446	* SC1;	%	SUCP--Pi + SUC; 0.27 DEFALT
+	V58	=	0.016819226	* SC;	%	F26BP--F6P + Pi
 end	
 	global 	V59	;
 	global  V60;
@@ -201,22 +201,22 @@ end
 	global  Vgap_in;
 	global  Vpga_in;
     
-	V59	=	0.03	* SC*SUCRatio(7);	    %	F6P + ATP --ADP + F26BP % defalut 0.03  (* 0.3)
-	V60	=	6.1	*SUCRatio(8);	        %	ATP+UDP --UTP + ADP
+	V59	=	0.03	* SC;	    %	F6P + ATP --ADP + F26BP % defalut 0.03  (* 0.3)
+	V60	=	6.1	;	        %	ATP+UDP --UTP + ADP
 	V61	=	10000;	        %	POPO --2PO
-	V62	=	2	* SC1*SUCRatio(9);	        %	SUC Sink        0.9 works.
-	Vdhap_in = 1.05* SC1*SUCRatio(10);        %   DHAP export from chloroplast
-	Vgap_in  = 1.05* SC1*SUCRatio(11);        %   GAP export from chloroplast
-	Vpga_in  =  1.05* SC1*SUCRatio(12);       %   PGA export from chloropalst
+	V62	=	2	* SC1;	        %	SUC Sink        0.9 works.
+	Vdhap_in = 1.05* SC1;        %   DHAP export from chloroplast
+	Vgap_in  = 1.05* SC1;        %   GAP export from chloroplast
+	Vpga_in  =  1.05* SC1;       %   PGA export from chloropalst
 
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Here is some pool values      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-ATc =  1.0*SUCRatio(13);      % mM
-UTc =  1.5*SUCRatio(14);          % mM
-PTc = 15*SUCRatio(15);          % 
+ATc =  1.0;      % mM
+UTc =  1.5;          % mM
+PTc = 15;          % 
 
 
 global SUCS_Pool;		

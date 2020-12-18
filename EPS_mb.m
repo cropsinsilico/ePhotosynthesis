@@ -62,8 +62,8 @@ end
 
 global EPS_ATP_Rate;   % The EPS_ATP_Rate is used in the overall model for the calculation of the mass balance equation of ATP.
 global PS2EPS_V16;     
-global PRGlu;
-EPS_DYDT(61) = CM_DYDT(9) - PS2EPS_V16 + EPS_ATP_Rate-PRGlu; %WY 201804
+
+EPS_DYDT(61) = CM_DYDT(9) - PS2EPS_V16 + EPS_ATP_Rate;
 EPS_DYDT(17) = EPS_DYDT(61);
 
 global PS2EPS_v3;
@@ -74,6 +74,5 @@ global BF_RC;
 Vmax11 = BF_RC	(	11	)			;	%	The maximum rate of ATP synthesis	Unit: mmol l-1 s-1; The unit for the reactions occurrs in stroma is mmol l-1 s-1
 
 %EPS_DYDT(62) = BF2EPS_vbfn2 - PS2EPS_v3 - 1 * PS2EPS_NADPH/(PS2EPS_NADPH + 0.5) ;
-%EPS_DYDT(62) = BF2EPS_vbfn2/2 - PS2EPS_v3;%- 1 * PS2EPS_NADPH/(PS2EPS_NADPH + 0.5) ;  %QF changed /2 and ;% - 1 * PS2EPS_NADPH/(PS2EPS_NADPH + 0.5)
-EPS_DYDT(62) = BF2EPS_vbfn2/2 - PS2EPS_v3-2*PRGlu;%WY 201804
+EPS_DYDT(62) = BF2EPS_vbfn2/2 - PS2EPS_v3;% - 1 * PS2EPS_NADPH/(PS2EPS_NADPH + 0.5) ;  %QF changed /2 and ;% - 1 * PS2EPS_NADPH/(PS2EPS_NADPH + 0.5)
 EPS_DYDT(29) = EPS_DYDT(62);           

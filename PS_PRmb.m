@@ -26,9 +26,6 @@
 
 
 function PS_PR_DYDT = PS_PRmb(t,PS_PRs,PS_PR_Param)
-global TestATPCost;
-global AVR;
-vATPcost=TestATPCost/AVR;
 
 PSs = zeros(15,1);
 PrS = zeros(13,1);
@@ -123,11 +120,11 @@ v2out= PR_v(10) ;
 global PSPR2RA_v1;
 global PSPR2RA_v13;
 global PSPR2RA_v111;
-global PRGlu;
+
 PSPR2RA_v1 = v1;
 PSPR2RA_v13 = v13;
 PSPR2RA_v111 = v111;
-PRGlu=v124;
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 6.  Calculation of the mass balance equations %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%$
@@ -158,8 +155,9 @@ tmp(7) = v9-v10;
 
 tmp(8) = v8 - v9;
 
-tmp(9) = v16 - v2 - v23 - v13- v113 - v25 - v131-vATPcost;    %WY202003 extra ATP cost
-%tmp(9) = v16 - v2 - v23 - v13- v113 - v25 - v124;    %AWY201804  
+
+tmp(9) = v16 - v2 - v23 - v13- v113 - v25;    
+  
 
 
 tmp(10) = 0;

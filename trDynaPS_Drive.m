@@ -6,7 +6,8 @@
 %University of Illinois at Urbana Champaign
 %Global Change and Photosynthesis Research Unit, USDA/ARS, 1406 Institute of Genomic Biology, Urbana, IL 61801, USA.
  
-%   This file is part of e-photosynthesis
+%   This file is part of e-photosynthesis.
+ 
 %    e-photosynthesis is free software; you can redistribute it and/or modify
 %    it under the terms of the GNU General Public License as published by
 %    the Free Software Foundation; 
@@ -20,61 +21,12 @@
 %    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function Resulta=trDynaPS_Drive(Cai,Lii,ATPCost,SucPath,ParaNum, Ratio)
-global TestCa;
-global TestLi;
-global TestSucPath;
-global TestATPCost;
-TestCa=Cai;
-TestLi=Lii;
-TestSucPath=SucPath;
-TestATPCost=ATPCost;
+
 % trDynaPS_Drive.m
 % This part include the function to begin the simulation.
 
 % The time information is set in a global variable called tglobal in SYSInitial. 
-global PSRatio;
-PSRatio=ones(103,1); 
-if ParaNum <= 103
-PSRatio(ParaNum)=Ratio;
-end
-global SUCRatio;
-SUCRatio=ones(66,1);
-if ParaNum > 103&&ParaNum<=169
-SUCRatio(ParaNum-103)=Ratio;
-end
-global PRRatio;
-PRRatio=ones(48,1);
-if ParaNum > 169&&ParaNum<=217
-PRRatio(ParaNum-169)=Ratio;
-end
-
-global RacRatio;
-RacRatio=ones(16,1);
-if ParaNum > 217&&ParaNum<=233
-RacRatio(ParaNum-217)=Ratio;
-end
-
-global FIRatio;
-FIRatio=ones(23,1);
-if ParaNum > 233&&ParaNum<=256
-FIRatio(ParaNum-233)=Ratio;
-end
-
-global BFRatio;
-BFRatio=ones(49,1);
-if ParaNum > 256&&ParaNum<=305
-BFRatio(ParaNum-256)=Ratio;
-end    
-
-
-global XanRatio;
-XanRatio=ones(4,1);
-if ParaNum > 305&&ParaNum<=309
-XanRatio(ParaNum-305)=Ratio;
-end 
-
-%clear; 
+clear; 
 time1 = clock;
 suc = PreProcess;
 
@@ -124,7 +76,7 @@ global CO2A;
 CO2A = zeros(5,1);
 
 % Next is to initialize the vector. 
-global d;
+
 trDynaPS_Con = trDynaPS_Ini;
 
 suc = ParamSet;
@@ -158,22 +110,17 @@ global AVR;
 %     Assim = CarbonRate - CO2Release;
     Vpgasink=SUCS_VEL(:,15)'*AVR;
     VStarch=(PS_VEL(14,:)-PS_VEL(20,:))*AVR;
-    %Vsucrose=SUCS_VEL(:,11)'*AVR;
-    Vt3p=(PS_VEL(15,:)+PS_VEL(17,:))*AVR;
-   % Vt3p=(SUCS_VEL(:,2))'*AVR*2;%+SUCS_VEL(:,13)
+    Vsucrose=SUCS_VEL(:,11)'*AVR;
     Resulta=[0;0;0;0;0;0;0];
-%     Resulta(1)=PSIIabs(row);
-%     Resulta(2)=PSIabs(row);
+    Resulta(1)=PSIIabs(row);
+    Resulta(2)=PSIabs(row);
     %Resulta(3)=PSIabs2(row);
-
-    Resulta(1)=CarbonRate(row);%Vc
-    Resulta(2)=VPR(row);%Vo
-    Resulta(3)=Vpgasink(row);%PGA
-    Resulta(4)=Vt3p(row);%VT3P
-    Resulta(5)=VStarch(row);%Vstarch
-    Resulta(6)=PR_VEL(row,10)*AVR;%Vt_glycerate
-    Resulta(7)=PR_VEL(row,11)*AVR;%Vt_glycolate
-    global FluxTR;
+    Resulta(3)=CarbonRate(row);
+    Resulta(4)=VPR(row);
+    Resulta(5)=Vpgasink(row);
+    Resulta(6)=Vsucrose(row);
+    Resulta(7)=VStarch(row);
+    
     FluxTR=zeros(81,1);
     FluxTR(1)=RuACT_VEL(row,6);%PS
     FluxTR(2)=RuACT_VEL(row,7);%PR
@@ -335,5 +282,4 @@ global AVR;
 % TotalRunTime = time2-time1
     
 IniModelCom;
-%save LRC
-end
+save LRC

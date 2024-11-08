@@ -429,7 +429,8 @@ end
 
 %global SUCS_RC;
 
-light = SUCS_Param(1);
+% Light unused
+%light = SUCS_Param(1);
 
 KE501	=	0.05	;	%	Equilibrium Constant		50		KE501		0.05		[Bassham, 1869 #832]
 Km511	=	0.02	;	%	FBP	4.1.2.13	51		Km511	FBP	0.02	Pisum sativum	(Anderson, Heinrikson et al. 1975)
@@ -1000,4 +1001,8 @@ CMr(37)=	vdhap_in	;%	DHAP IN
 CMr(38)=	vgap_in	;%	GAP Export from chloroplast
 CMr(39)=	vpga_in	;%	PGA export from chloroplast
 CMr(40)=	vpga_use	;%	PGA utilisation in cytosol
-CMr(41)=	vatpf	;%	ATP synthesis rate	
+CMr(41)=	vatpf	;%	ATP synthesis rate
+
+export_mod_dict("PS", CM_Con, "Ps");
+export_mod_dict("PR", CM_Con, "Pr");
+export_mod_dict("SUCS", CM_Con, "");

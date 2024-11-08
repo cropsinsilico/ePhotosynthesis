@@ -432,3 +432,5 @@ BF2FIBFMB_PHl = PHl;
 
 global BF2TrDynaPSMB_vcet; 
 BF2TrDynaPSMB_vcet = vcet; 
+
+export_mod_dict("BF", BF_con, "");

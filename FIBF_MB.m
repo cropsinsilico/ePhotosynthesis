@@ -180,3 +180,5 @@ CPQ     =  -GPQH2_qb + Vbf3 - Vbf7;
 FIBF_mb (8)     =   0	;	        %	Q	Quinone in thylakoid membrane in free form
 FIBF_mb	(	12	)	=	GPQH2_t;	%	QH2	The PQH2 concentration; the coefficient 2 represent the fact that 2 protons were taken up by one Q2-.
 FIBF_mb	(	51	)	=	GPQH2_t;	%	QH2	The PQH2 concentration; the coefficient 2 represent the fact that 2 protons were taken up by one Q2-.
+
+export_mod_dict("FIBF", FIBF_Con, "");

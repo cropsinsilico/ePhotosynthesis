@@ -48,6 +48,24 @@ end
 CM_DYDT = CM_mb(t,CMs,PS_PR_Param, Sucs_Param);
 FIBF_DYDT = FIBF_MB(t, FIBF_Con, BF_Param, FI_Param);
 
+% Dump a copy of the model parameters if export_mod_enabled is set
+global export_mod_enabled;
+if (export_mod_enabled)
+    if (t == 0)
+        dump_vars("EPS_init.txt", EPS_Dict(EPS_Con));
+    else
+        EPS_Con_dump = zeros(87,1);
+        for m = 1:52
+            EPS_Con_dump(m) = FIBF_Con(m);
+        end
+        for m = 1:35
+            EPS_Con_dump(m+52) = CMs(m);
+        end
+        dump_vars("EPS_final.txt", EPS_Dict(EPS_Con_dump));
+    end
+    export_mod_enabled = 0;
+end
+
 % Step III: Calculate the mass balanec equation for the EPS model. This basically need to make sure that the variables 
 % used in the mass balance equation should be in exact sequence with the sequence used in the inialization.
 

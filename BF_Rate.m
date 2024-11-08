@@ -375,6 +375,7 @@ BF_VEL	(	BF_TIME_N	,	28	)	=	Vbf15	;
 BF_VEL	(	BF_TIME_N	,	29	)	=	Vbf16	;
 BF_VEL	(	BF_TIME_N	,	30	)	=	vbfn2	;
 BF_VEL	(	BF_TIME_N	,	31	)	=	VsNADPH	;
+BF_VEL	(	BF_TIME_N	,	32	)	=	vcet	;
 
 BF_CON(BF_TIME_N,1) = t;
 BF_CON(BF_TIME_N,2) = MPotential;

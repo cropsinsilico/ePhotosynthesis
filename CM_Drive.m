@@ -23,8 +23,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-clear all; 
+global dontClear;
+if (~dontClear)
+    clear all;
+end
+InitRatios(1, 1);
 
 Begin = 1;
 fin = SYSInitial(Begin);
@@ -93,7 +96,12 @@ PS_PR_Param = 0;
 %   output  step      %
 %%%%%%%%%%%%%%%%%%%%%%%%
 
+global dontGraph;
+if (~dontGraph)
 success = CM_OUT(Tt, d);
+else
+success = 1;
+end
 
 % Reinitialize some values of global variables. 
 PSPR_SUCS_com = 0;

@@ -62,7 +62,7 @@ if (export_mod_enabled)
         for m = 1:35
             EPS_Con_dump(m+52) = CMs(m);
         end
-        dump_vars(export_mod_file_base + "final.txt", EPS_Dict(EPS_Con_dump));
+        dump_vars(export_mod_file_base + "last.txt", EPS_Dict(EPS_Con_dump));
     end
     export_mod_enabled = 0;
 end

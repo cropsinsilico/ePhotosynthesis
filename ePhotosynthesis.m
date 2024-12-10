@@ -122,7 +122,6 @@ if (strlength(OutputParamBase) > 0)
     global export_mod_enabled;
     export_mod_enabled = 1;
     export_mod_file_base = OutputParamBase;
-    export_mod_file_base + "init.txt"
 end
 
 fileID = 0;

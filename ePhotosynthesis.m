@@ -1,4 +1,4 @@
-function Arate = ePhotosynthesis(driver, EnvFile, GRNFile, EnzymeFile, ...
+function Arate = ePhotosynthesis(driver, EnvFile, GRNFile, EnzymeFile, ATPCostFile, ...
                                  OutputFile, OutputParam, WeatherTemp, ...
                                  Radiation_PAR, Air_CO2, O2i, ...
                                  ProteinTotalRatio, GRNCin, GRNTin, ...
@@ -8,6 +8,7 @@ arguments
     EnvFile (1,1) string = ""
     GRNFile (1,1) string = ""
     EnzymeFile (1,1) string = ""
+    ATPCostFile (1,1) string = ""
     OutputFile (1,1) string = "output.data"
     OutputParam (1,1) double = 0
     WeatherTemp (1,1) double = 25
@@ -38,6 +39,8 @@ global Tp;
 global RUBISCOMETHOD;
 global RUBISCOTOTAL;
 
+SucPath = 0;
+ATPCost = 0.0;
 GRNC = GRNCin;
 GRNT = GRNTin;
 RUBISCOMETHOD = RUBISCOMETHODin;
@@ -62,6 +65,15 @@ if (strlength(EnvFile) > 0)
     end
     if isKey(Env_data, "GRNT")
         GRNT = Env_data("GRNT");
+    end
+    if isKey(Env_data, "SucPath")
+        SucPath = Env_data("SucPath");
+    end
+end
+if (strlength(ATPCostFile) > 0)
+    ATPCost_data = ReadParam(ATPCostFile);
+    if isKey(ATPCost_data, "ATPCost")
+        ATPCost = ATPCost_data("ATPCost");
     end
 end
 
@@ -116,6 +128,14 @@ if strlength(OutputFile) > 0
 end
 
 if (driver == 1)
+    ResultRate = trDynaPS_Drive(CO2i, PPFDi, ATPCost, SucPath, 1, 1);
+    if (fileID)
+        Output(1)="Light intensity,Vc,Vo,VPGA,VT3P,Vstarch,Vt_glycerate,Vt_glycolate,CO2AR";
+        Output(2)=Lii+","+ResultRate(1)+","+ResultRate(2)+","+ResultRate(3)+","+ResultRate(4)+","+ResultRate(5)+","+ResultRate(6)+","+ResultRate(7)+","+ResultRate(8);
+        fprintf(fileID,Output(1));
+        fprintf(fileID,"\n");
+        fprintf(fileID,Output(2));
+    end
 elseif (driver == 2)
 elseif (driver == 3)
     % CO2AR = CM_Driver(pop, currentPop)

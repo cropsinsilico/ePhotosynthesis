@@ -1,5 +1,5 @@
 function Arate = ePhotosynthesis(driver, EnvFile, GRNFile, EnzymeFile, ATPCostFile, ...
-                                 OutputFile, OutputParam, WeatherTemp, ...
+                                 OutputFile, OutputParamBase, WeatherTemp, ...
                                  Radiation_PAR, Air_CO2, O2i, ...
                                  ProteinTotalRatio, GRNCin, GRNTin, ...
                                  RUBISCOMETHODin, RUBISCOTOTALin)
@@ -10,7 +10,7 @@ arguments
     EnzymeFile (1,1) string = ""
     ATPCostFile (1,1) string = ""
     OutputFile (1,1) string = "output.data"
-    OutputParam (1,1) double = 0
+    OutputParamBase (1,1) string = ""
     WeatherTemp (1,1) double = 25
     Radiation_PAR (1,1) double = 470*0.85*0.85
     Air_CO2 (1,1) double = 400
@@ -117,9 +117,12 @@ else
     Enzyme_data = ones(66, 1);
 end
 
-if OutputParam
+if (strlength(OutputParamBase) > 0)
+    global export_mod_file_base;
     global export_mod_enabled;
     export_mod_enabled = 1;
+    export_mod_file_base = OutputParamBase;
+    export_mod_file_base + "init.txt"
 end
 
 fileID = 0;
@@ -152,4 +155,5 @@ elseif (driver == 4)
 end
 if fileID
     fclose(fileID);
+end
 end

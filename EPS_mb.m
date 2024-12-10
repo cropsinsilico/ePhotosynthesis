@@ -51,8 +51,9 @@ FIBF_DYDT = FIBF_MB(t, FIBF_Con, BF_Param, FI_Param);
 % Dump a copy of the model parameters if export_mod_enabled is set
 global export_mod_enabled;
 if (export_mod_enabled)
+    global export_mod_file_base;
     if (t == 0)
-        dump_vars("EPS_init.txt", EPS_Dict(EPS_Con));
+        dump_vars(export_mod_file_base + "init.txt", EPS_Dict(EPS_Con));
     else
         EPS_Con_dump = zeros(87,1);
         for m = 1:52
@@ -61,7 +62,7 @@ if (export_mod_enabled)
         for m = 1:35
             EPS_Con_dump(m+52) = CMs(m);
         end
-        dump_vars("EPS_final.txt", EPS_Dict(EPS_Con_dump));
+        dump_vars(export_mod_file_base + "final.txt", EPS_Dict(EPS_Con_dump));
     end
     export_mod_enabled = 0;
 end

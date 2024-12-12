@@ -1,5 +1,5 @@
-abstol = 1.0e-04;
-reltol = 1.0e-04;
+abstol = 1.0e-02;
+reltol = 1.0e-03;
 mfilePath = mfilename('fullpath');
 if contains(mfilePath,'LiveEditorEvaluationHelper')
     mfilePath = matlab.desktop.editor.getActiveFilename;

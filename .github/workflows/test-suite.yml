@@ -18,7 +18,7 @@ jobs:
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
       - name: Run tests command
-        matlab-actions/run-command@v2
+        uses: matlab-actions/run-command@v2
         with:
           command: runtests('tests'); exit;
           startup-options: -nodisplay -nosplash -nodesktop -nojvm -logfile matlab_log.txt

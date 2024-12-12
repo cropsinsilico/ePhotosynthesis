@@ -25,5 +25,5 @@ jobs:
       - name: Display MATLAB log
         run: cat matlab_log.txt
       - name: Run tests
-        matlab-actions/run-tests@v2
+        uses: matlab-actions/run-tests@v2
         select-by-folder: tests

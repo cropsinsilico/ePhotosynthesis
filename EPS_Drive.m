@@ -23,8 +23,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-clear; 
+global dontClear;
+if (~dontClear)
+clear;
+end
+InitRatios(1, 1);
 
 Begin = 1;
 fin = SYSInitial(Begin);
@@ -91,7 +94,10 @@ CO2A = zeros(5,1);
 [Tt,d] = ode15s(@EPS_mb,[0,time],EPS_Con,options1,BF_Param, FI_Param, PS_PR_Param, Sucs_Param);
 
 %   The following section deals with the data output of the program.
-GraphSuc = EPS_Graph(Tt,d);    
+global dontGraph;
+if (~dontGraph)
+GraphSuc = EPS_Graph(Tt,d);
+end
 % Here is the place to recover the status of the regulatory variables. 
     
 %     ATPActive = 0;

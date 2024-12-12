@@ -1,0 +1,30 @@
+name: Verify that MATLAB & C++ versions return the same answers
+'on':
+  push:
+    branches-ignore:
+     - gh-pages
+    tags:
+     - '*'
+  schedule:
+  - cron: 0 10 * * 1
+jobs:
+  build_cxx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v2
+      # - name: Run tests command
+      #   uses: matlab-actions/run-command@v2
+      #   with:
+      #     command: runtests('tests'); exit;
+      #     startup-options: -nodisplay -nosplash -nodesktop -nojvm -logfile matlab_log.txt
+      # - name: Display MATLAB log
+      #   run: cat matlab_log.txt
+      - name: Run tests
+        uses: matlab-actions/run-tests@v2
+        with:
+          select-by-folder: tests

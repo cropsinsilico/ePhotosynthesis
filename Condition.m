@@ -30,6 +30,15 @@
 % second part contains the detailed conditions for different time period.
 
 function fini = Condition (t)
+% Allow early abort if environmental inputs handled via ePhotosynthesis
+% function
+global dontCondition;
+if (dontCondition)
+    global NumInter_draw;
+    NumInter_draw = 10;
+    fini = 1;
+    return;
+end
 global TestCa;
 global TestLi;
 global RUBISCOMETHOD;         % The method for calculation of Rubisco catalyzed reaction

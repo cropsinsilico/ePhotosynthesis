@@ -25,6 +25,8 @@
 
 function CO2AR = CM_Drive2(pop, currentPop)
 
+InitRatios(1, 1);
+
 Begin = 1;
 fin = SysInitial(Begin);
 global options1;

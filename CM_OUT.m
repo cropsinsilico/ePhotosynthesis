@@ -33,7 +33,7 @@ SUCS = d(:,24:35);
 
 PSPR(:,24) = d(:,36);
 
-out1 = PSPR_OUT(Tt,PSPR);
+out1 = PSPR_Out(Tt,PSPR);
 out2 = SUCS_Graph(Tt,SUCS);
 
 OUTSUC = 1;

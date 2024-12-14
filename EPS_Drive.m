@@ -114,7 +114,9 @@ global CO2A;
 CO2A = zeros(5,1);
 
 
+global export_mod;
 global export_mod_enabled;
+export_mod = 'EPS';
 reenable_export_mod = export_mod_enabled;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -148,7 +150,7 @@ reenable_export_mod = export_mod_enabled;
     PhotosynthesisRate=Arate;
 
     % Run again to output variables
-    if reenable_export_mod
+    if reenable_export_mod == 1
         export_mod_enabled = 1;
         EPS_mb(time, d(row, :), BF_Param, FI_Param, PS_PR_Param, Sucs_Param);
     end

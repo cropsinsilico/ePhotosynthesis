@@ -27,7 +27,7 @@ function CM_DYDT = CM_mb(t, CM_Con, PS_PR_Param, SUCS_Param)
 
 % SUCS_Param(1) is unused
 % global GLight;
-% fini = cdn (t);
+% fini = Condition(t);
 % light = GLight;
 
 % SUCS_Param(1) = light; 

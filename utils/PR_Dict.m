@@ -1,9 +1,10 @@
-function out = PR_Dict(CM_Con)
+function out = PR_Dict(cond, start)
 
 out = dictionary();
 
 out_COND = import_pt_dict("PR", "COND");
-out_COND('RuBP') = CM_Con(1);
+PS_COND = import_pt_dict("PS", "COND");
+out_COND('RuBP') = PS_COND('RuBP');
 out_COND('_v131') = 0;
 
 out_MOD = import_pt_dict("PR", "MOD");

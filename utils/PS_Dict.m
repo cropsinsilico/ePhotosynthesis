@@ -1,4 +1,4 @@
-function out = PS_Dict(CM_Con)
+function out = PS_Dict(cond, start)
 
 out = dictionary();
 

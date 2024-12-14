@@ -1,7 +1,9 @@
 function out = FIBF_NAMES(pt)
 global FIBF_COND_START;
 FIBF_COND_START = 52;
-if (pt == "PARAM_TYPES")
+if (pt == "CHILDREN")
+out = ["BF", "FI"];
+elseif (pt == "PARAM_TYPES")
 out = ["pool"];
 elseif (pt == "MOD")
 out = [

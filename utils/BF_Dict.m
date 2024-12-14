@@ -1,4 +1,4 @@
-function out = BF_Dict(BF_Con)
+function out = BF_Dict(cond, start)
 
 out = dictionary();
 

@@ -1,4 +1,4 @@
-function out = SUCS_Dict(CM_Con)
+function out = SUCS_Dict(cond, start)
 
 out = dictionary();
 

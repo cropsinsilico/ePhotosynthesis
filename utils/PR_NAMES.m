@@ -1,7 +1,9 @@
 function out = PR_NAMES(pt)
 global PR_COND_START;
 PR_COND_START = 15;
-if (pt == "PARAM_TYPES")
+if (pt == "CHILDREN")
+out = [];
+elseif (pt == "PARAM_TYPES")
 out = [];
 elseif (pt == "MOD")
 out = [

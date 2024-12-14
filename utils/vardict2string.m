@@ -1,9 +1,18 @@
 function out = vardict2string(x)
 out = "";
-modules = keys(x);
+if isempty(x) || ~isConfigured(x)
+    return;
+end
+modules = ["BF", "FIBF", "FI", "PR", "PS", "SUCS", "ALL"];
 for imod = 1:length(modules)
     mod = modules(imod);
+    if (~isKey(x, mod))
+        continue
+    end
     xmod = x(mod);
+    if isempty(xmod) || ~isConfigured(xmod)
+        continue;
+    end
     if (mod == "ALL")
         param_types = keys(xmod);
     else
@@ -13,6 +22,9 @@ for imod = 1:length(modules)
         pt = param_types(ipt);
         if (isKey(xmod, pt))
             xpt = xmod(pt);
+            if isempty(xpt) || ~isConfigured(xpt)
+                continue;
+            end
             vars = keys(xpt);
             for ivar = 1:length(vars)
                 k = vars(ivar);

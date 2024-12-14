@@ -1,7 +1,9 @@
 function out = SUCS_NAMES(pt)
 global SUCS_COND_START;
 SUCS_COND_START = 24;
-if (pt == "PARAM_TYPES")
+if (pt == "CHILDREN")
+out = [];
+elseif (pt == "PARAM_TYPES")
 out = [];
 elseif (pt == "MOD")
 out = [

@@ -1003,6 +1003,10 @@ CMr(39)=	vpga_in	;%	PGA export from chloroplast
 CMr(40)=	vpga_use	;%	PGA utilisation in cytosol
 CMr(41)=	vatpf	;%	ATP synthesis rate
 
-export_mod_dict("PS", CM_Con, "Ps");
-export_mod_dict("PR", CM_Con, "Pr");
-export_mod_dict("SUCS", CM_Con, "");
+global export_mod_enabled;
+if export_mod_enabled == 1
+    export_mod_dict(t, "PS", CM_Con, "Ps", "", 1);
+    export_mod_dict(t, "PR", CM_Con, "Pr", "", 15);
+    export_mod_dict(t, "SUCS", CM_Con, "", "", 24);
+    export_mod_dict(t, "CM", CM_Con, "");
+end

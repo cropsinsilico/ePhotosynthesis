@@ -1,7 +1,9 @@
 function out = PS_NAMES(pt)
 global PS_COND_START;
 PS_COND_START = 1;
-if (pt == "PARAM_TYPES")
+if (pt == "CHILDREN")
+out = [];
+elseif (pt == "PARAM_TYPES")
 out = [];
 elseif (pt == "MOD")
 out = [

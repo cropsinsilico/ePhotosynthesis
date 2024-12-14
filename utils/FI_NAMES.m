@@ -1,7 +1,9 @@
 function out = FI_NAMES(pt)
 global FI_COND_START;
 FI_COND_START = 1;
-if (pt == "PARAM_TYPES")
+if (pt == "CHILDREN")
+out = [];
+elseif (pt == "PARAM_TYPES")
 out = ["POOL", "RC"];
 elseif (pt == "MOD")
 out = [

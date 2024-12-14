@@ -100,6 +100,11 @@ PS_PR_Param = 0;
 
 suc = AssignVelocity(pop, currentPop);
 
+global export_mod;
+global export_mod_enabled;
+export_mod = 'CM';
+reenable_export_mod = export_mod_enabled;
+
 [Tt,d] = ode15s(@CM_mb,[0,time],CMs, options1,PS_PR_Param, SUCS_Param);
 
 global d_plot;
@@ -116,3 +121,9 @@ PSPR_SUCS_com = 0;
 IModelCom;
 
 CO2AR = TargetFunVal
+
+if reenable_export_mod == 1
+    export_mod_enabled = 1;
+    [row,col]=size(d);
+    CM_mb(time, d(row, :), PS_PR_Param, Sucs_Param);
+end

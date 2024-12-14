@@ -1,4 +1,4 @@
-function out = FIBF_Dict(FIBF_Con)
+function out = FIBF_Dict(cond, start)
 
 global FIBF_Pool;
 global FIBF_AUX;

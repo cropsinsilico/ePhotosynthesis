@@ -1,4 +1,4 @@
-function out = FI_Dict(FI_Con)
+function out = FI_Dict(cond, start)
 
 out = dictionary();
 

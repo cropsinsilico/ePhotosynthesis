@@ -1,0 +1,7 @@
+CO2                     400.0
+PAR                     470.0  # umol s**-1 m**-2
+PAR_in_Wpm2             0
+SucPath	                0
+WeatherTemperature	25.0
+ProteinTotalRatio	0.973
+GRNC                    1.0

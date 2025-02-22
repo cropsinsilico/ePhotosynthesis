@@ -50,8 +50,10 @@ assert(all(absdiff <= abstol))
 
 %% Test EPS Driver with default input
 expected = [14.6712];
+tic
 actual = ePhotosynthesis(4, EnvFile, GRNFile, EnzymeFile, ...
                          ATPCostFile, OutputFile);
+toc
 reldiff = abs(actual - expected) ./ actual
 absdiff = abs(actual - expected)
 assert(all(reldiff <= reltol))

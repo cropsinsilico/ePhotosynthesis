@@ -70,3 +70,19 @@ DYDT_PGA = EPS_DYDT(54) - 2 * PSPR2RA_v1 + 2 * RuACT2RA_v61 - PSPR2RA_v111 + RuA
 
 DYDT_PGCA = EPS_DYDT(69) - PSPR2RA_v111 + RuACT2RA_v62;           
 RA_DYDT(69) = DYDT_PGCA;
+
+
+global export_mod_enabled;
+if export_mod_enabled == 1
+    RA_Con_dump = RA_Con;
+    if t ~= 0
+        RA_Con_dump = zeros(92,1);
+        for m = 1:88
+            RA_Con_dump(m) = EPS_Con(m);
+        end
+        for m = 1:4
+            RA_Con_dump(m+88) = RuACT_Con(m);
+        end
+    end
+    export_mod_dict(t, "RA", RA_Con_dump, "");
+end

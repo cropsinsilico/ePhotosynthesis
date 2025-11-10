@@ -24,7 +24,7 @@
 
 
 
-function RROEA_mb = RROEA_Mb(t,RROEA_Con,RROEA_Param)
+function RROEA_mb = RROEA_mb(t,RROEA_Con,RROEA_Param)
 
 global GLight;
 fini = Condition (t);

@@ -107,6 +107,11 @@ XanCycle_Param(2) = PS12ratio;
 
 RedoxReg_Param = 0; % This parameter is just used here as a future storage tool. NOt used now. 
 
+global export_mod;
+global export_mod_enabled;
+export_mod = 'DynaPS';
+reenable_export_mod = export_mod_enabled;
+
 [Tt,d] = ode15s(@DynaPS_mb,[0,time],DynaPS_Con,options1,BF_Param, FI_Param, PS_PR_Param, RuACT_Param, RedoxReg_Param, XanCycle_Param, SUCS_Param);
 
 
@@ -204,5 +209,12 @@ global AVR;
 % global PS_VEL;
 clock
     
+% Run again to output variables
+if reenable_export_mod == 1
+    export_mod_enabled = 1;
+    [row,col]=size(d);
+    DynaPS_mb(time, d(row, :), BF_Param, FI_Param, PS_PR_Param, RuACT_Param, RedoxReg_Param, XanCycle_Param, SUCS_Param);
+end
+
 IniModelCom;
 %save FDC2

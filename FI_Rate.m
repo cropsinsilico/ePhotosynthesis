@@ -376,3 +376,8 @@ FI_Vel  (   58  )   =   vP680_f;
 
 
 
+global export_mod_enabled;
+if export_mod_enabled == 1
+    export_mod_dict(t, "FI", FI_Con, "");
+end
+

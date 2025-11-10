@@ -339,3 +339,8 @@ PR2OUT(9)    =   Hprc;
 PR2OUT(10)   =   Gceac;
 PR2OUT(11)   =   Rubp;
 PR2OUT(12)   =   v131;
+
+global export_mod_enabled;
+if export_mod_enabled == 1
+    export_mod_dict(t, "PR", PrS, "");
+end

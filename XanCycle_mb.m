@@ -23,7 +23,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function XanCycle_mb = XanCycle_Mb(t,XanCycle_Con,XanCycle_Param)
+function XanCycle_mb = XanCycle_mb(t,XanCycle_Con,XanCycle_Param)
 
 
 fini = Condition (t);
@@ -44,4 +44,3 @@ XanCycle_mb	(	1	)	=	Vvf + Vav - Vva - Vv2ABA	;
 XanCycle_mb	(	2	)	=	Vva - Vav + Vza - Vaz;	 	
 XanCycle_mb	(	3	)	=	Vaz - Vza	;	 
 XanCycle_mb	(	4	)	=	Vv2ABA - VABAdg;	 
-

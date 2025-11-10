@@ -77,3 +77,18 @@ Vmax11 = BF_RC	(	11	)			;	%	The maximum rate of ATP synthesis	Unit: mmol l-1 s-1
 %EPS_DYDT(62) = BF2EPS_vbfn2/2 - PS2EPS_v3;%- 1 * PS2EPS_NADPH/(PS2EPS_NADPH + 0.5) ;  %QF changed /2 and ;% - 1 * PS2EPS_NADPH/(PS2EPS_NADPH + 0.5)
 EPS_DYDT(62) = BF2EPS_vbfn2/2 - PS2EPS_v3-2*PRGlu;%WY 201804
 EPS_DYDT(29) = EPS_DYDT(62);           
+
+global export_mod_enabled;
+if export_mod_enabled == 1
+    EPS_Con_dump = EPS_Con;
+    if t ~= 0
+        EPS_Con_dump = zeros(87,1);
+        for m = 1:52
+            EPS_Con_dump(m) = FIBF_Con(m);
+        end
+        for m = 1:35
+            EPS_Con_dump(m+52) = CMs(m);
+        end
+    end
+    export_mod_dict(t, "EPS", EPS_Con_dump, "");
+end

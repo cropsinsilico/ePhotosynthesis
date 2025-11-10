@@ -24,7 +24,7 @@
 
 
 
-function RuACT_mb = RuACT_Mb(t,RuACT_Con,RuACT_Param)
+function RuACT_mb = RuACT_MB(t,RuACT_Con,RuACT_Param)
 
 global GLight;
 fini = Condition (t);

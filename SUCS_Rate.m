@@ -311,4 +311,10 @@ SUCS2OUT	(	8		)		=   UDPGc;
 SUCS2OUT	(	9		)		=   UTPc;		
 SUCS2OUT	(	10		)		=   SUCP;
 SUCS2OUT	(	11		)		=   SUC;		
-SUCS2OUT	(	12		)		=   PGAc;		
+SUCS2OUT	(	12		)		=   PGAc;
+
+
+global export_mod_enabled;
+if export_mod_enabled == 1
+    export_mod_dict(t, "SUCS", SUCS_Con, "");
+end

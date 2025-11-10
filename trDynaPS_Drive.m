@@ -94,6 +94,11 @@ suc = ParamSet;
 
 [FI_Param, BF_Param, PS_PR_Param, SUCS_Param, EPS_Param, RuACT_Param, XanCycle_Param, RROEA_Param, RedoxReg_Param] = ParamSet;
 
+global export_mod;
+global export_mod_enabled;
+export_mod = 'trDynaPS';
+reenable_export_mod = export_mod_enabled;
+
 [Tt,d] = ode15s(@trDynaPS_mb,[0,time],trDynaPS_Con,options1,BF_Param, FI_Param, PS_PR_Param, SUCS_Param, RuACT_Param, RedoxReg_Param, XanCycle_Param, RROEA_Param);
 ATPActive = 0;
 global BF_VEL;
@@ -297,6 +302,13 @@ global AVR;
 % time2 = clock;
 % TotalRunTime = time2-time1
     
+% Run again to output variables
+if reenable_export_mod == 1
+    export_mod_enabled = 1;
+    [row,col]=size(d);
+    trDynaPS_mb(time, d(row, :), BF_Param, FI_Param, PS_PR_Param, SUCS_Param, RuACT_Param, RedoxReg_Param, XanCycle_Param, RROEA_Param);
+end
+
 IniModelCom;
 %save LRC
 end

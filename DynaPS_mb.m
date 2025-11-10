@@ -63,4 +63,19 @@ for index = 1:4
     DynaPS_DYDT(index+92) = XanCycle_DYDT(index);
 end
 % Temp = DynaPS_DYDT(24) -2*PRGlu;
-%DynaPS_DYDT(24) = Temp; 
+%DynaPS_DYDT(24) = Temp;
+
+global export_mod_enabled;
+if export_mod_enabled == 1
+    DynaPS_Con_dump = DynaPS_Con;
+    if t ~= 0
+        DynaPS_Con_dump = zeros(96,1);
+        for m = 1:92
+            DynaPS_Con_dump(m) = RA_Con(m);
+        end
+        for m = 1:4
+            DynaPS_Con_dump(m+92) = XanCycle_Con(m);
+        end
+    end
+    export_mod_dict(t, "DynaPS", DynaPS_Con_dump, "");
+end

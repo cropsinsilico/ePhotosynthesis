@@ -183,3 +183,8 @@ RROEA2trDynaPS_ve2Fd = ve2Fd;
 
 global RROEA2trDynaPS_veFd2Calvin;
 RROEA2trDynaPS_veFd2Calvin = veFd2Calvin;
+
+global export_mod_enabled;
+if export_mod_enabled == 1
+    export_mod_dict(t, "RROEA", RROEA_Con, "");
+end

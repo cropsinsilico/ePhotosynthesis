@@ -74,3 +74,18 @@ Temp = RROEA_DYDT(9) - RROEA2trDynaPS_ve2Fd + BF2RROEA_Vbf16/AVR + RROEA2trDynaP
 trDynaPS_DYDT(119) = Temp * AVR;
 trDynaPS_DYDT(24) = Temp * AVR; 
 GenOut (t); 
+
+global export_mod_enabled;
+if export_mod_enabled == 1
+    trDynaPS_Con_dump = trDynaPS_Con;
+    if t ~= 0
+        trDynaPS_Con_dump = zeros(120,1);
+        for m = 1:96
+            trDynaPS_Con_dump(m) = DynaPS_Con(m);
+        end
+        for m = 1:10
+            trDynaPS_Con_dump(m+110) = RROEA_Con(m);
+        end
+    end
+    export_mod_dict(t, "trDynaPS", trDynaPS_Con_dump, "");
+end

@@ -192,4 +192,10 @@ Percent = ECM/ET;
 
 
 global RuACT2PS_Percent; 
-RuACT2PS_Percent = Percent; 
+RuACT2PS_Percent = Percent;
+
+
+global export_mod_enabled;
+if export_mod_enabled == 1
+    export_mod_dict(t, "RuACT", RuACT_Con, "");
+end

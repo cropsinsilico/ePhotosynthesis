@@ -89,6 +89,11 @@ PSPR_SUCS_com = 1;
 global CO2A;
 CO2A = zeros(5,1);
 
+global export_mod;
+global export_mod_enabled;
+export_mod = 'EPS';
+reenable_export_mod = export_mod_enabled;
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 [Tt,d] = ode15s(@EPS_mb,[0,time],EPS_Con,options1,BF_Param, FI_Param, PS_PR_Param, Sucs_Param);
@@ -114,3 +119,11 @@ end
     global FI_CON; 
     global BF_VEL; 
     global BF_CON; 
+
+
+% Run again to output variables
+if reenable_export_mod == 1
+    export_mod_enabled = 1;
+    [row,col]=size(d);
+    EPS_mb(time, d(row, :), BF_Param, FI_Param, PS_PR_Param, Sucs_Param);
+end

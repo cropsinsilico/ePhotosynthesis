@@ -23,7 +23,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 
-function SUCS_mb = SUCS_Mb(t,SUCS_Con,SUCS_Param)
+function SUCS_mb = SUCS_mb(t,SUCS_Con,SUCS_Param)
 
 global GLight;
 

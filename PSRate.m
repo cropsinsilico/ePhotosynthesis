@@ -643,4 +643,10 @@ PS2OUT(14)  =   HexP;
 PS2OUT(15)  =   PenP;        
 PS2OUT(16)  =   Pi;    
 PS2OUT(17)  =   ADP;    
-PS2OUT(18) =    v1;   
+PS2OUT(18) =    v1;
+
+
+global export_mod_enabled;
+if export_mod_enabled == 1
+    export_mod_dict(t, "PS", PSs, "");
+end

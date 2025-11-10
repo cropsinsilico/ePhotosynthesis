@@ -25,6 +25,18 @@ arguments
 end
 driver = str2double(driver);
 
+% Add model repo to path
+mfilePath = mfilename('fullpath');
+if contains(mfilePath,'LiveEditorEvaluationHelper')
+    mfilePath = matlab.desktop.editor.getActiveFilename;
+end
+ephotoDir = fileparts(mfilePath);
+addpath(genpath(ephotoDir));
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Global parameters that can be read in
+%%%%%%%%%%%%%%%%%%%%%%%%
+
 global GRNC;
 global GRNT;
 global pcfactor;
@@ -50,9 +62,11 @@ global VolRatioStCyto;
 global dontCondition;
 global dontGraph;
 global dontClear;
-% dontCondition = 1;
+global export_mod_enabled;
+dontCondition = 1;
 dontGraph = 1;
 % dontClear = 1;
+export_mod_enabled = 0;
 
 SucPath = 0;
 ATPCost = 0.0;
@@ -60,7 +74,6 @@ GRNC = GRNCin;
 GRNT = GRNTin;
 RUBISCOMETHOD = RUBISCOMETHODin;
 RUBISCOTOTAL = RUBISCOTOTALin;
-pcfactor = 1.0 / 0.973;
 
 if (strlength(EnvFile) > 0)
     fprintf("EVN FILE PROVIDED: %s\n", EnvFile);
@@ -71,7 +84,7 @@ if (strlength(EnvFile) > 0)
     if isKey(Env_data, "PAR")
         PARi = Env_data("PAR");
     end
-    % TODO: Propery unit parsing?
+    % TODO: Proper unit parsing?
     if isKey(Env_data, "PAR_in_Wpm2")
         PAR_in_Wpm2 = Env_data("PAR_in_Wpm2");
     end
@@ -107,20 +120,20 @@ end
 TestATPCost = ATPCost;
 TestSucPath = SucPath;
 
+pcfactor = 1/ProteinTotalRatio;
 if dontCondition
     CO2_Env = 0.7 * TestCa; % intercellular CO2
     CO2_cond = CO2_Env/(3 * 10^4);
-    % TestLi = TestLi / 30;
     O2_cond = O2i * 1.26;
     Tp = WeatherTemp;
-    pcfactor = 1/ProteinTotalRatio;
     Temp_cond = Tp;
     GLight = TestLi*0.85*0.85;  % light umol m-2 s-1
     VolRatioStCyto = 1;
+    LI = TestLi/30;
 end
 
 if (strlength(GRNFile) > 0)
-    fprintf("GRN FILE PROVIDED: %s\n", GRNFile);
+    fprintf("GRN FILE PROVIDED: %s (GRNC = %d)\n", GRNFile, GRNC);
     GRN_data = pcfactor * ReadGRN(GRNFile);
     VfactorC = GRN_data(1:33);
     if GRNC == 1
@@ -153,8 +166,8 @@ else
 end
 
 if (strlength(OutputParamBase) > 0)
+    fprintf("OUTPUT PARAM BASE PROVIDED %s\n", OutputParamBase);
     global export_mod_file_base;
-    global export_mod_enabled;
     export_mod_enabled = 1;
     export_mod_file_base = OutputParamBase;
 end

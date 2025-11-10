@@ -114,3 +114,9 @@ end
 RedoxReg_VEL(1,RedoxReg_TIME_N) = t;
 RedoxReg_VEL(2,RedoxReg_TIME_N) = Vred;
 RedoxReg_VEL(3,RedoxReg_TIME_N) = Vox;
+
+
+global export_mod_enabled;
+if export_mod_enabled == 1
+    export_mod_dict(t, "RedoxReg", RedoxReg_Con, "");
+end

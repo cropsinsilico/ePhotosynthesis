@@ -122,3 +122,8 @@ XanCycle2OUT(1) = Vx;
 XanCycle2OUT(2) = Ax;
 XanCycle2OUT(3) = Zx;
 XanCycle2OUT(4) = ABA;
+
+global export_mod_enabled;
+if export_mod_enabled == 1
+    export_mod_dict(t, "XanCycle", XanCycle_Con, "");
+end
